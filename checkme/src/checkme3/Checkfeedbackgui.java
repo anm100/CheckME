@@ -4,26 +4,39 @@ import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import Utils.MyTableModel;
 import checkmeController.ConnectToServer;
 import checkmeController.Check;
 
 import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class Checkfeedbackgui extends JPanel {
     Check check=new Check();
-    
-	
+    ArrayList <Check> arr = new ArrayList<Check>();
+	private Checkfeedbackgui thisref=this;
 	private JTextField amount1;
 	private JTextField date1;
 	private JTextField checknumber1;
 	private JTextField id1;
 	private JTextField checkstatus1;
+	private JTable tblToday;
+	private int ex_id;
 
 	
 
@@ -36,96 +49,81 @@ public class Checkfeedbackgui extends JPanel {
 	public  Checkfeedbackgui ()
 	{
 		
-		setBounds(45, 124, 469, 390);
-		setLayout(null);
-		setBackground(Color.MAGENTA);
 		
 		
 		
-		amount1 = new JTextField();
-		amount1.setBounds(242, 106, 86, 20);
-		add(amount1);
-		amount1.setColumns(10);
-		
-		date1 = new JTextField();
-		date1.setBounds(242, 156, 86, 20);
-		add(date1);
-		date1.setColumns(10);
-		
-		checknumber1 = new JTextField();
-		checknumber1.setBounds(242, 58, 86, 20);
-		add(checknumber1);
-		checknumber1.setColumns(10);
-		
-		JLabel checknumber = new JLabel("check num");
-		checknumber.setHorizontalAlignment(SwingConstants.CENTER);
-		checknumber.setBounds(35, 60, 114, 17);
-		add(checknumber);
-		
-		JLabel amount = new JLabel("amount");
-		amount.setHorizontalAlignment(SwingConstants.CENTER);
-		amount.setBounds(58, 109, 68, 14);
-		add(amount);
-		
-		JLabel date = new JLabel("date");
-		date.setHorizontalAlignment(SwingConstants.CENTER);
-		date.setBounds(58, 159, 68, 14);
-		add(date);
-		
-		JLabel checkfeedback = new JLabel("check feedback");
-		checkfeedback.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		checkfeedback.setHorizontalAlignment(SwingConstants.CENTER);
-		checkfeedback.setBounds(147, 11, 162, 38);
-		add(checkfeedback);
-		
-		JButton finish = new JButton("finish");
-		finish.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {						
-				if(ConnectToServer.Checkchecks( getchecknumber(),getamount(),getdate(),getid(),getcheckstatus()))
-				{
-					setCheckNumber(getchecknumber() );
-				    setcheckstatus(getcheckstatus());
-					setamount(getamount());
-					setid(getid());
-					setdate(getdate());
-					 
-					  
-				}
-				
-				
-				else
-				{
+	
+			setBounds(45, 124, 471, 401);
+			setLayout(null);
+			setBackground(Color.LIGHT_GRAY);
+			JScrollPane scrollPane = new JScrollPane();
+			scrollPane.setBounds(10, 127, 741, 409);
+			add(scrollPane);
+
+			tblToday = new JTable();
+			scrollPane.setViewportView(tblToday);
+			tblToday.setModel(
+					new MyTableModel(new String[] { "CheckNum", "amount", "date", "checkStatus" }, new Object[][] {}));
+
+			JLabel lblTodaysExaminations = new JLabel("check feedback");
+			lblTodaysExaminations.setHorizontalAlignment(SwingConstants.CENTER);
+			lblTodaysExaminations.setBounds(209, 102, 170, 14);
+			add(lblTodaysExaminations);
+
+			fillExaminations(tblToday);
+			tblToday.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+				public void valueChanged(ListSelectionEvent event) {
+					System.out.println("clicked - row");
 					
+					
+					
+					
+					if (event.getValueIsAdjusting())
+						return;
+					int row = tblToday.getSelectedRow();
+					System.out.println(row);
+					
+					if(row<0)
+						return;
+				//	ex_id = (int) tblToday.getModel().getValueAt(row, 0);
+                    check=thisref.arr.get(	row );
+                    System.out.println(check.getCheckNum());
+                   ( new feedbackdatagui(check.getCheckNum() ).setVisible(true);
+				/*	Examination ex = ExaminationController.getById(ex_id);
+					ExamEditor edit = new ExamEditor(ex,row,true,self);*/
+
 				}
-				
-			}
-		});
-		finish.setBounds(180, 323, 89, 23);
-		add(finish);
+			});
+		//	setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[] { logo }));
+			setBounds(100, 100, 763, 576);
 		
-		JLabel id = new JLabel("id");
-		id.setHorizontalAlignment(SwingConstants.CENTER);
-		id.setBounds(74, 211, 46, 14);
-		add(id);
 		
-		id1 = new JTextField();
-		id1.setHorizontalAlignment(SwingConstants.CENTER);
-		id1.setBounds(242, 208, 86, 20);
-		add(id1);
-		id1.setColumns(10);
-		
-		JLabel checkstatus = new JLabel("check status");
-		checkstatus.setHorizontalAlignment(SwingConstants.CENTER);
-		checkstatus.setBounds(74, 260, 86, 14);
-		add(checkstatus);
-		
-		checkstatus1 = new JTextField();
-		checkstatus1.setHorizontalAlignment(SwingConstants.CENTER);
-		checkstatus1.setBounds(242, 257, 86, 20);
-		add(checkstatus1);
-		checkstatus1.setColumns(10);
-		setVisible(true);
+			setVisible(true);
+		}
+
+
+	public void removeRow(int index){
+		((DefaultTableModel)tblToday.getModel()).removeRow(index);
 	}
+	public void fillExaminations(JTable tbl) {
+		DefaultTableModel model = (DefaultTableModel) tbl.getModel();
+		JsonParser parser = new JsonParser();
+		
+		JsonArray arr = new JsonArray();
+		JsonObject jsnobject = (JsonObject) parser.parse(ConnectToServer.getCheckhistory("ameer"));
+
+		JsonArray jsonArray = jsnobject.getAsJsonArray("Checks");
+		for (int i = 0; i < jsonArray.size(); i++) {
+			JsonObject e = jsonArray.get(i).getAsJsonObject();
+		    
+			model.addRow(new Object[] { e.get("hash"),e.get("amount"),e.get("date"),e.get("checkstatus") });
+			this.arr.add(new Check(e.get("hash").toString(),e.get("amount").toString(),e.get("date").toString(),e.get("checkstatus").toString()));
+		}
+		System.out.println("this array json"+jsonArray.toString());
+
+
+		}
+	
 	
 	
 	
@@ -169,5 +167,4 @@ public class Checkfeedbackgui extends JPanel {
 	public String getchecknumber() {
 		return checknumber1.getText().toString();
 	}
-	
 }

@@ -13,7 +13,7 @@ public class Check {
 	{
 		
 	}
-	public Check(String CheckNum, String id,String checkstatus, String amount,String date)
+	public Check(String CheckNum,String amount, String date,String checkstatus)
 	{
 		 this. CheckNum = CheckNum;
     	this.id=id;
