@@ -56,6 +56,48 @@ public class ConnectToServer {
  	    }
 		return null;
 	}
+	
+	public static String connectget(String  hash_id,String URL)
+	{
+	    URL obj = null;
+	    HttpURLConnection con = null;
+		try {
+	        obj = new URL(URL+"?hash="+hash_id); // url/server to get a connection to
+	        con = (HttpURLConnection) obj.openConnection(); // open a new connection to server
+	        con.setRequestMethod("GET");  // POST method has been chosen
+
+	        // For POST only - BEGIN
+	        con.setDoOutput(true);
+	        java.io.OutputStream os =  con.getOutputStream();
+	       // os.write(POST_PARAMS.getBytes());
+	        os.flush();
+	        os.close();
+	        // For POST only - END
+
+	        int responseCode = con.getResponseCode(); // getting the response code from server
+	        System.out.println( "POST Response Code :: " + responseCode);
+
+	        if (responseCode == HttpURLConnection.HTTP_OK) { //success
+	            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+	            String inputLine;
+	            StringBuffer response = new StringBuffer();
+
+	            while ((inputLine = in.readLine()) != null) { //checking response from server
+	                response.append(inputLine);
+	               // POST_PARAMS=inputLine;
+	            }
+	            System.out.println( " response buffer :" +response);
+	            in.close();
+	            inputLine = response.toString();
+	            return inputLine;
+	        }
+		}
+		 catch (IOException e) {
+  	       
+ 	        System.out.println("Exception : " + e.getMessage());
+ 	    }
+		return null;
+	}
 	public static  void connectwriting (String username ,String pass , String mail  )
 	{
 		String POST_PARAMS="&username=" +username+"&password="+pass+"&mail="+mail;
@@ -79,23 +121,17 @@ public class ConnectToServer {
 		return false;
 	}
 	
-	public static boolean Checkchecks( String CheckNum,  String amount, String date,String id, String checkstatus)
+	public static void Checkchecks( String CheckNum)
 	
 	{
-		String POST_PARAMS="&CheckNum=" +CheckNum+"&amount ="+amount+"&date ="+date+"&id ="+id+"&checkstatus ="+checkstatus;
-		String inputLine = connect(POST_PARAMS,"http://cellularguide.info/ameer/test/get_single_check_history.php");
-		String inputLine1=connect(POST_PARAMS,"http://majdy.waqet.net/majdy/get_check_details.php");
+		String POST_PARAMS="&hash=" +CheckNum;
+		String inputLine1=connectget(POST_PARAMS,"http://majdy.waqet.net/majdy/get_check_details.php");
+		System.out.println(inputLine1);
 		
 		
 		
 		
-        if (inputLine.contains("check Found")||inputLine1.contains("check Found"))
-        {
-        	
-        
-        	return true;
-        }
-		return false;
+       
 	}
 	
 	
@@ -105,5 +141,38 @@ public class ConnectToServer {
 		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/GetAllChecks.php");
 		return inputLine;
 	}
+	public static String  gethistoryCheckfeedback(String hash)
+	{
+		String POST_PARAMS="&hash=" +hash;
+		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/get_single_check_history.php");
+		return inputLine;
+	}
+	
+	public static String  savehistorysCheckfeedback(String hash,String date,String checkstatus)
+	{
+		String POST_PARAMS="&hash=" +hash+"&date=" +date+"&checkstatus=" +checkstatus;
+		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/Add_Check_History.php");
+		return inputLine;
+	}
+	
+	public static String  getstatusCheckfeedback(String hash)
+	{
+		String POST_PARAMS="&hash=" +hash;
+		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/update_check.php");
+		return inputLine;
+	}
+	
+	public static String  savestatusCheckfeedback(String hash,String amount,String date,String checkstatus)
+	{
+		String POST_PARAMS="&hash=" +hash+"&amount=" +amount+"&date=" +date+"&checkstatus=" +checkstatus;;
+		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/update_check.php");
+		return inputLine;
+	}
+	
+	
+	
+	
+	
+	
 	
 }

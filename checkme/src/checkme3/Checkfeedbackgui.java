@@ -88,7 +88,8 @@ public class Checkfeedbackgui extends JPanel {
 				//	ex_id = (int) tblToday.getModel().getValueAt(row, 0);
                     check=thisref.arr.get(	row );
                     System.out.println(check.getCheckNum());
-                   ( new feedbackdatagui(check.getCheckNum() ).setVisible(true);
+                    ConnectToServer.Checkchecks("00103641126140066696");
+                   //( new feedbackdatagui(check.getCheckNum() ).setVisible(true);
 				/*	Examination ex = ExaminationController.getById(ex_id);
 					ExamEditor edit = new ExamEditor(ex,row,true,self);*/
 
