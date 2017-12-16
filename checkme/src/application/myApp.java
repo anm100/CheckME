@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 
 import checkme3.Historygui;
 import checkme3.Logingui;
@@ -46,6 +47,19 @@ import checkme3.Registergui;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		try {
+            //here you can put the selected theme class name in JTattoo
+            UIManager.setLookAndFeel("com.jtattoo.plaf.graphite.GraphiteLookAndFeel");
+ 
+        } catch (ClassNotFoundException ex) {
+        //    java.util.logging.Logger.getLogger(PC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+        //    java.util.logging.Logger.getLogger(PC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+        //    java.util.logging.Logger.getLogger(PC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            //java.util.logging.Logger.getLogger(PC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
 		 login=new Logingui();
 
 		
@@ -73,8 +87,17 @@ import checkme3.Registergui;
 			 mainFarame=new MainFramegui();
 			login.dispose();
 			}
-			else
-			{
+			
+			break;
+			
+		case "about us":
+			if(panel!=null)
+			mainFarame.getContentPane().remove(panel);
+			mainFarame.getContentPane().add(aboutus);
+			panel=aboutus;
+			mainFarame.repaint();
+			break;
+		case "_register":
 				mainFarame=new MainFramegui();
 				if(panel!=null)
 				{
@@ -95,17 +118,7 @@ import checkme3.Registergui;
 				login.dispose();
 		
 			}
-		
 			
-			}
-			break;
-			
-		case "about us":
-			if(panel!=null)
-			mainFarame.getContentPane().remove(panel);
-			mainFarame.getContentPane().add(aboutus);
-			panel=aboutus;
-			mainFarame.repaint();
 			break;
 		case "check feedback":
 			//if(ConnectToServer.Checkchecks( checkfeedback.getchecknumber(), checkfeedback.getamount(), checkfeedback.getdate(), checkfeedback.getid(), checkfeedback.getcheckstatus()))

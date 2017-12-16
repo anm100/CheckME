@@ -26,49 +26,49 @@ public class Logingui extends JFrame{
 			 
 			 getContentPane().setLayout(null);
 			 
-			 JLabel lblNewLabel = new JLabel("user name");
+			 JLabel lblNewLabel = new JLabel("Username");
 			 lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 16));
 			 lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-			 lblNewLabel.setBounds(30, 140, 118, 24);
+			 lblNewLabel.setBounds(47, 107, 118, 24);
 			 getContentPane().add(lblNewLabel);
 			 
-			 JLabel lblNewLabel_1 = new JLabel("password");
+			 JLabel lblNewLabel_1 = new JLabel("Password");
 			 lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 15));
 			 lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 			
-			 lblNewLabel_1.setBounds(48, 187, 89, 24);
+			 lblNewLabel_1.setBounds(57, 153, 89, 24);
 			 getContentPane().add(lblNewLabel_1);
 			 
-			 JLabel lblNewLabel_2 = new JLabel("log in page");
+			 JLabel lblNewLabel_2 = new JLabel("Log in - logo");
 			 lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 			 lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 15));
 			
-			 lblNewLabel_2.setBounds(153, 30, 137, 24);
+			 lblNewLabel_2.setBounds(155, 36, 137, 24);
 			 getContentPane().add(lblNewLabel_2);
 			 
 			 txtUserhere = new JTextField();
 			 txtUserhere.setHorizontalAlignment(SwingConstants.TRAILING);
-			 txtUserhere.setBounds(182, 144, 86, 20);
+			 txtUserhere.setBounds(158, 103, 162, 35);
 			 txtUserhere.setVisible(true);
 			 getContentPane().add(txtUserhere);
 			 txtUserhere.setColumns(10);
 			 
 			 txtPassword = new JTextField();
 			 txtPassword.setHorizontalAlignment(SwingConstants.TRAILING);
-			 txtPassword.setBounds(182, 190, 86, 20);
+			 txtPassword.setBounds(158, 148, 162, 35);
 			 txtPassword.setVisible(true);
 			 getContentPane().add(txtPassword);
 			 txtPassword.setColumns(10);
 			 
-			 JButton btnNewButton = new JButton("log in");
+			 JButton btnNewButton = new JButton("Log in");
 			 btnNewButton.setActionCommand("LogIn");
 			 btnNewButton.setHorizontalAlignment(SwingConstants.TRAILING);
-			 btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 15));
-			 btnNewButton.setBounds(166, 241, 89, 23);
+			 btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 19));
+			 btnNewButton.setBounds(183, 208, 89, 35);
 			 //btnNewButton.setVisible(true);
 			 getContentPane().add(btnNewButton);
 			 
-			 JButton forgetpass = new JButton("forget password");
+			 JButton forgetpass = new JButton("Forget Password");
 			 forgetpass.addActionListener(new ActionListener() {
 			 	public void actionPerformed(ActionEvent arg0) {
 			 		
@@ -79,21 +79,18 @@ public class Logingui extends JFrame{
 			 		
 			 	}
 			 });
-			 forgetpass.setFont(new Font("Times New Roman", Font.BOLD, 18));
-			 forgetpass.setBounds(258, 242, 155, 23);
+			 forgetpass.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+			 forgetpass.setBounds(149, 269, 155, 23);
 			 getContentPane().add(forgetpass);
 			 
-			 JLabel newinfo = new JLabel("please enter details in two feilds");
-			 newinfo.addComponentListener(new ComponentAdapter() {
-			 
-			 	
-			 });
-			 newinfo.setFont(new Font("Times New Roman", Font.BOLD, 16));
-			 newinfo.setHorizontalAlignment(SwingConstants.CENTER);
-			 newinfo.setBounds(80, 85, 278, 24);
-			 getContentPane().add(newinfo);
+			 JButton btnRegister = new JButton("Register");
+			 btnRegister.addActionListener(myApp.getInstance());
+			 btnRegister.setActionCommand("_register");
+			 btnRegister.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+			 btnRegister.setBounds(149, 305, 155, 23);
+			 getContentPane().add(btnRegister);
 			
-			setSize(477, 452);
+			setSize(433, 399);
 			 
 			 
 			 btnNewButton.addActionListener(myApp.getInstance());

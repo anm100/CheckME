@@ -31,7 +31,7 @@ public  class MainFramegui extends JFrame  {
 		b1.addActionListener(myApp.getInstance());
 		JButton b2 = new JButton("check feedback");
 		b2.setActionCommand("check feedback");
-		b2.setBounds(128, 62, 107, 23);
+		b2.setBounds(130, 62, 107, 23);
 		getContentPane().add(b2);
 		b2.addActionListener(myApp.getInstance());
 	
@@ -57,10 +57,6 @@ public  class MainFramegui extends JFrame  {
 		b6.setActionCommand("log out");
 		b6.setBounds(541, 62, 89, 23);
 		getContentPane().add(b6);
-		
-		JButton register = new JButton("register");
-		register.setBounds(442, 62, 89, 23);
-		getContentPane().add(register);
 		b6.addActionListener(myApp.getInstance());
 	}
 }
