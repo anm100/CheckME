@@ -4,15 +4,18 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
+import checkmeController.ConnectToServer;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Registergui extends JPanel {
-	private JTextField fname;
-	private JTextField lname;
+	private JTextField username;
 	private JTextField pass;
-	private JTextField id1;
 	private JTextField confirmpass;
 	private JTextField mail;
 	private JTextField confirmmail;
@@ -29,29 +32,19 @@ public class Registergui extends JPanel {
 	register.setBounds(95, 26, 255, 26);
 	add(register);
 	
-	JLabel firstname = new JLabel("first name");
+	JLabel firstname = new JLabel("username");
 	firstname.setHorizontalAlignment(SwingConstants.CENTER);
 	firstname.setBounds(84, 100, 64, 14);
 	add(firstname);
-	
-	JLabel lastname = new JLabel("last name");
-	lastname.setHorizontalAlignment(SwingConstants.CENTER);
-	lastname.setBounds(84, 142, 64, 14);
-	add(lastname);
 	
 	JLabel password = new JLabel("password");
 	password.setBounds(95, 231, 53, 14);
 	add(password);
 	
-	fname = new JTextField();
-	fname.setBounds(207, 97, 86, 20);
-	add(fname);
-	fname.setColumns(10);
-	
-	lname = new JTextField();
-	lname.setBounds(207, 142, 86, 20);
-	add(lname);
-	lname.setColumns(10);
+	username = new JTextField();
+	username.setBounds(207, 97, 86, 20);
+	add(username);
+	username.setColumns(10);
 	
 	pass = new JTextField();
 	pass.setBounds(207, 228, 86, 20);
@@ -59,18 +52,14 @@ public class Registergui extends JPanel {
 	pass.setColumns(10);
 	
 	JButton finish = new JButton("finish");
+	finish.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			ConnectToServer.connectwriting(username.getText().toString(),pass.getText().toString(), mail.getText().toString());
+
+		}
+	});
 	finish.setBounds(159, 383, 89, 23);
 	add(finish);
-	
-	JLabel id = new JLabel("id");
-	id.setHorizontalAlignment(SwingConstants.CENTER);
-	id.setBounds(84, 185, 64, 14);
-	add(id);
-	
-	id1 = new JTextField();
-	id1.setBounds(207, 187, 86, 20);
-	add(id1);
-	id1.setColumns(10);
 	
 	JLabel confirmpassword = new JLabel("conifirm password");
 	confirmpassword.setHorizontalAlignment(SwingConstants.CENTER);

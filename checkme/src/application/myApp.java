@@ -15,10 +15,10 @@ import checkmeController.ConnectToServer;
 import checkme3.Aboutusgui;
 import checkme3.Checkfeedbackgui;
 import checkme3.Registergui;
- public class MainController  implements  ActionListener {
+ public class myApp  implements  ActionListener {
 	 private static final int newinfo = 0;
 
-	private static MainController instance = null;
+	private static myApp instance = null;
 	 
 		Historygui history =new Historygui();
 		Aboutusgui  aboutus =new Aboutusgui();
@@ -34,12 +34,12 @@ import checkme3.Registergui;
 		JPanel panel=null;
 		
 		
-	   protected MainController() {
+	   protected myApp() {
 	      // Exists only to defeat instantiation.
 	   }
-	   public static MainController getInstance() {
+	   public static myApp getInstance() {
 	      if(instance == null) {
-	         instance = new MainController();
+	         instance = new myApp();
 	      }
 	      return instance;
 	   }

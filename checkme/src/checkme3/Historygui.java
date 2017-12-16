@@ -52,6 +52,9 @@ public class Historygui extends JPanel {
 		tblToday.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent event) {
 				System.out.println("clicked - row");
+				
+				
+				
 				/*
 				if (event.getValueIsAdjusting())
 					return;
@@ -68,26 +71,7 @@ public class Historygui extends JPanel {
 	//	setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[] { logo }));
 		setBounds(100, 100, 763, 576);
 	
-
-
-
 	
-	/**
-	 * fill examination of laboratory to this table
-	 * 
-	 * @param tbl
-	 *            : table of examination today
-	 */
-
-		JButton getinfo = new JButton("get information about all checks");
-		getinfo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			ConnectToServer.getCheckhistory("ameer");			
-			}
-		});
-		
-		getinfo.setBounds(87, 331, 226, 23);
-		add(getinfo);
 		setVisible(true);
 	}
 

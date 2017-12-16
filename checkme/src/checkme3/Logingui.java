@@ -2,7 +2,7 @@ package checkme3;
 
 import javax.swing.*;
 
-import application.MainController;
+import application.myApp;
 
 import java.awt.event.*;
 import java.awt.Font;
@@ -96,7 +96,7 @@ public class Logingui extends JFrame{
 			setSize(477, 452);
 			 
 			 
-			 btnNewButton.addActionListener(MainController.getInstance());
+			 btnNewButton.addActionListener(myApp.getInstance());
 		 }
 			public String getTxtUserhere() {
 				return txtUserhere.getText().toString();

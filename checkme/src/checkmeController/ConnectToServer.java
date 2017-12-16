@@ -56,9 +56,12 @@ public class ConnectToServer {
  	    }
 		return null;
 	}
-	public  void connectwriting (String  POST_PARAMS)
+	public static  void connectwriting (String username ,String pass , String mail  )
 	{
+		String POST_PARAMS="&username=" +username+"&password="+pass+"&mail="+mail;
+		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/register.php");
 		
+		System.out.println(inputLine);
 		  
 			 
 		
@@ -81,7 +84,7 @@ public class ConnectToServer {
 	{
 		String POST_PARAMS="&CheckNum=" +CheckNum+"&amount ="+amount+"&date ="+date+"&id ="+id+"&checkstatus ="+checkstatus;
 		String inputLine = connect(POST_PARAMS,"http://cellularguide.info/ameer/test/get_single_check_history.php");
-		String inputLine1=connect(POST_PARAMS,"http://cellularguide.info/ameer/test/get_check_details.php");
+		String inputLine1=connect(POST_PARAMS,"http://majdy.waqet.net/majdy/get_check_details.php");
 		
 		
 		
