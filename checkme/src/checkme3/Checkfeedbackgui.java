@@ -50,10 +50,6 @@ public class Checkfeedbackgui  extends JPanel  {
 	public  Checkfeedbackgui ()
 	{
 		
-		
-		
-		
-	
 			setBounds(45, 124, 471, 401);
 			setLayout(null);
 			setBackground(Color.LIGHT_GRAY);
@@ -75,10 +71,6 @@ public class Checkfeedbackgui  extends JPanel  {
 			tblToday.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 				public void valueChanged(ListSelectionEvent event) {
 					
-					
-					
-					
-					
 					if (event.getValueIsAdjusting())
 						return;
 					int row = tblToday.getSelectedRow();
@@ -86,13 +78,12 @@ public class Checkfeedbackgui  extends JPanel  {
 					
 					if(row<0)
 						return;
-				//	ex_id = (int) tblToday.getModel().getValueAt(row, 0);
-                    check=thisref.arr.get(	row );
+					
+                    check=thisref.arr.get(row );
                     System.out.println(check.getCheckNum());
-                    ConnectToServer.Checkchecks("00103641126140066696");
-                   //( new feedbackdatagui(check.getCheckNum() ).setVisible(true);
-				/*	Examination ex = ExaminationController.getById(ex_id);
-					ExamEditor edit = new ExamEditor(ex,row,true,self);*/
+                    FeedbackGUI ind=new FeedbackGUI(check.getCheckNum());
+                    ind.getFrame();
+
 
 				}
 			});
@@ -118,8 +109,10 @@ public class Checkfeedbackgui  extends JPanel  {
 		for (int i = 0; i < jsonArray.size(); i++) {
 			JsonObject e = jsonArray.get(i).getAsJsonObject();
 		    
-			model.addRow(new Object[] { e.get("hash"),e.get("amount"),e.get("date"),e.get("checkstatus") });
-			this.arr.add(new Check(e.get("hash").toString(),e.get("amount").toString(),e.get("date").toString(),e.get("checkstatus").toString()));
+			model.addRow(new Object[] { e.get("hash").getAsString(),e.get("amount").getAsString(),e.get("date").getAsString(),e.get("checkstatus").getAsString() });
+			System.out.println(e.get("hash").getAsString());
+
+			this.arr.add(new Check(e.get("hash").getAsString(),e.get("amount").getAsString(),e.get("date").getAsString(),e.get("checkstatus").getAsString()));
 		}
 		System.out.println("this array json"+jsonArray.toString());
 

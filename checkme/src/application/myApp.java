@@ -4,10 +4,12 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 import checkme3.Historygui;
+import checkme3.FeedbackGUI;
 import checkme3.Logingui;
 import checkme3.MainFramegui;
 import checkme3.Validategui;
@@ -20,7 +22,7 @@ import checkme3.Registergui;
 	 private static final int newinfo = 0;
 
 	private static myApp instance = null;
-	 
+	 	
 		Historygui history =new Historygui();
 		Aboutusgui  aboutus =new Aboutusgui();
 		Checkfeedbackgui checkfeedback= new Checkfeedbackgui();
@@ -61,7 +63,7 @@ import checkme3.Registergui;
             //java.util.logging.Logger.getLogger(PC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 		 login=new Logingui();
-
+	 
 		
 
 	}
