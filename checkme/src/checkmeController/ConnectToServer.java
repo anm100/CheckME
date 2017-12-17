@@ -155,12 +155,7 @@ public class ConnectToServer {
 		return inputLine;
 	}
 	
-	public static String  getstatusCheckfeedback(String hash)
-	{
-		String POST_PARAMS="&hash=" +hash;
-		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/update_check.php");
-		return inputLine;
-	}
+	
 	
 	public static String  savestatusCheckfeedback(String hash,String amount,String date,String checkstatus)
 	{

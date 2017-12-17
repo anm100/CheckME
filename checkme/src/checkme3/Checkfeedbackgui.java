@@ -26,9 +26,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class Checkfeedbackgui extends JPanel {
+public class Checkfeedbackgui  extends JPanel  {
     Check check=new Check();
     ArrayList <Check> arr = new ArrayList<Check>();
+  
 	private Checkfeedbackgui thisref=this;
 	private JTextField amount1;
 	private JTextField date1;
@@ -73,7 +74,7 @@ public class Checkfeedbackgui extends JPanel {
 			fillExaminations(tblToday);
 			tblToday.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 				public void valueChanged(ListSelectionEvent event) {
-					System.out.println("clicked - row");
+					
 					
 					
 					
