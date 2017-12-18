@@ -45,6 +45,9 @@ public class FeedbackGUI  {
 		private FeedbackGUI thisref=this;
 
 	private JFrame disID;
+	private JRadioButton honor;
+	private JRadioButton rejectedtec;
+	private JRadioButton rejectnomoney;
 
 	public FeedbackGUI(String hashid) {
 		initialize(hashid);
@@ -58,15 +61,17 @@ public class FeedbackGUI  {
 		disID.setTitle("rename-feedback");
 		disID.getContentPane().setLayout(null);
 		
-		JRadioButton honor = new JRadioButton("honored");
+		honor = new JRadioButton("honored");
 		honor.setHorizontalAlignment(SwingConstants.LEFT);
 		honor.setBounds(6, 265, 109, 23);
 		disID.getContentPane().add(honor);
-		JRadioButton rejectedtec = new JRadioButton("reject technically");
+		rejectedtec = new JRadioButton("reject technically");
+		rejectedtec.setSelected(true);
 		rejectedtec.setBounds(6, 291, 109, 23);
 		disID.getContentPane().add(rejectedtec);
 		
-		JRadioButton rejectnomoney = new JRadioButton("reject not enough money");
+		rejectnomoney = new JRadioButton("reject not enough money");
+		rejectnomoney.setSelected(true);
 		rejectnomoney.setBounds(6, 317, 123, 23);
 		disID.getContentPane().add(rejectnomoney);
 		
@@ -128,10 +133,16 @@ public class FeedbackGUI  {
 				JsonArray jsonArray2 = jsnobject.getAsJsonArray("Checks");
 				for (int i = 0; i < jsonArray.size(); i++) {
 					JsonObject e = jsonArray.get(i).getAsJsonObject();
-				    
-					//model.addRow(new Object[] { e.get("hash"),e.get("amount"),e.get("date"),e.get("checkstatus") });
+					//model.addRow(new Object[] { e.get("hash"),e.get("date"),e.get("checkstatus") });
+					
+					
 					thisref.arr.add(new Check(e.get("hash").toString(),e.get("amount").toString(),e.get("date").toString(),e.get("checkstatus").toString()));
+					ConnectToServer. savehistorysCheckfeedback(e.get("hash").toString(),e.get("date").toString(),e.get("checkstatus").toString());	
+					setdatee(e.get("date").toString());
+					setchecknum1(e.get("hash").toString());
+					setcheckstatus2(e.get("checkstatus").toString());
 				}
+				
 				System.out.println("this array json"+jsonArray.toString());
 				
 				
@@ -145,9 +156,20 @@ public class FeedbackGUI  {
 					JsonObject e = jsonArray.get(i).getAsJsonObject();
 				    
 					//model.addRow(new Object[] { e.get("hash"),e.get("amount"),e.get("date"),e.get("checkstatus") });
+					
 					thisref.arr.add(new Check(e.get("hash").toString(),e.get("amount").toString(),e.get("date").toString(),e.get("checkstatus").toString()));
+					ConnectToServer.savestatusCheckfeedback(e.get("hash").toString(),e.get("amount").toString(),e.get("date").toString(),e.get("checkstatus").toString());
+					setdatee(e.get("date").toString());
+					setchecknum1(e.get("hash").toString());
+					setamount2(e.get("amount").toString());
+					setcheckstatus2(e.get("checkstatus").toString());
 				}
 				System.out.println("this array json"+jsonArray.toString());
+				
+				
+				
+				
+				
 				
 			}
 		});
@@ -194,16 +216,51 @@ public class FeedbackGUI  {
 	public String getcheckstatus2() {
 		return checkstatus2.getText().toString();
 	}
+	public void setcheckstatus2 ( String checkstatus ) {
+		  this.checkstatus2.setText(checkstatus);
+		}
 	public String getamount2() {
 		return amount2.getText().toString();
 	}
+	public void setamount2 ( String amount ) {
+		  this.amount2.setText(amount);
+		}
 	public String getdatee() {
 		return datee.getText().toString();
 	}
+	public void setdatee ( String date ) {
+		  this.datee.setText(date);
+		}
 	public String getchecknum1() {
 		return checknum1.getText().toString();
 	}
+	public void setchecknum1 ( String CheckNumber ) {
+		  this.checknum1.setText(CheckNumber);
+		}
+	
+	
 	public JFrame getFrame() {
 		return disID;
+	}
+	public String getHonorSelected() {
+		return" honored";
+	}
+	public void setHonorSelected(boolean selected) {
+		honor.setSelected(selected);
+		honor.setText("honored");
+	}
+	public String getRejectedtecSelected() {
+		return "rejectedtechnacly";
+	}
+	public void setRejectedtecSelected(boolean selected_1) {
+		rejectedtec.setSelected(selected_1);
+		rejectedtec.setText("rejected technacely");
+	}
+	public String getRejectnomoneySelected() {
+		return "reject no enough money";
+	}
+	public void setRejectnomoneySelected(boolean selected_2) {
+		rejectnomoney.setSelected(selected_2);
+		rejectnomoney.setText(" reject no enough money");
 	}
 }

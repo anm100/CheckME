@@ -4,6 +4,8 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 
+import application.Resources;
+
 public class Aboutusgui extends JPanel {
 
 	public Aboutusgui()
@@ -12,6 +14,8 @@ public class Aboutusgui extends JPanel {
 	setLayout(null);
 	setBackground(Color.RED);
 	setVisible(true);
+	
+	//Resources.getImageFromPath(C:\Users\win10\Desktop);
 	}
 
 }

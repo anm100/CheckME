@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.text.JTextComponent;
 
 import checkmeController.ConnectToServer;
 
@@ -15,10 +16,32 @@ import java.awt.event.ActionEvent;
 
 public class Registergui extends JPanel {
 	private JTextField username;
+	public JTextField getUsername() {
+		return username;
+	}
+
+	public void setUsername(JTextField username) {
+		this.username = username;
+	}
+
+	public JTextField getPass() {
+		return pass;
+	}
+
+	public void setPass(JTextField pass) {
+		this.pass = pass;
+	}
+
+	public JTextField getMail() {
+		return mail;
+	}
+
+	public  void setMail(JTextField mail) {
+		this.mail = mail;
+	}
+
 	private JTextField pass;
-	private JTextField confirmpass;
 	private JTextField mail;
-	private JTextField confirmmail;
 	
 	public Registergui()
 	{
@@ -38,7 +61,7 @@ public class Registergui extends JPanel {
 	add(firstname);
 	
 	JLabel password = new JLabel("password");
-	password.setBounds(95, 231, 53, 14);
+	password.setBounds(95, 141, 53, 14);
 	add(password);
 	
 	username = new JTextField();
@@ -47,7 +70,7 @@ public class Registergui extends JPanel {
 	username.setColumns(10);
 	
 	pass = new JTextField();
-	pass.setBounds(207, 228, 86, 20);
+	pass.setBounds(207, 138, 86, 20);
 	add(pass);
 	pass.setColumns(10);
 	
@@ -58,39 +81,21 @@ public class Registergui extends JPanel {
 
 		}
 	});
-	finish.setBounds(159, 383, 89, 23);
+	finish.setBounds(142, 242, 89, 23);
 	add(finish);
-	
-	JLabel confirmpassword = new JLabel("conifirm password");
-	confirmpassword.setHorizontalAlignment(SwingConstants.CENTER);
-	confirmpassword.setBounds(59, 274, 102, 14);
-	add(confirmpassword);
-	
-	confirmpass = new JTextField();
-	confirmpass.setBounds(207, 271, 86, 20);
-	add(confirmpass);
-	confirmpass.setColumns(10);
 	
 	JLabel email = new JLabel("email");
 	email.setHorizontalAlignment(SwingConstants.CENTER);
-	email.setBounds(91, 313, 46, 14);
+	email.setBounds(95, 182, 46, 14);
 	add(email);
 	
 	mail = new JTextField();
-	mail.setBounds(207, 310, 86, 20);
+	mail.setBounds(207, 179, 86, 20);
 	add(mail);
 	mail.setColumns(10);
-	
-	JLabel confirmemail = new JLabel("confirm email");
-	confirmemail.setHorizontalAlignment(SwingConstants.CENTER);
-	confirmemail.setBounds(59, 351, 118, 14);
-	add(confirmemail);
-	
-	confirmmail = new JTextField();
-	confirmmail.setBounds(207, 348, 86, 20);
-	add(confirmmail);
-	confirmmail.setColumns(10);
 	setVisible(true);
 	}
+
+	
 
 }

@@ -3,6 +3,7 @@ package checkme3;
 import javax.swing.*;
 
 import application.myApp;
+import checkmeController.ConnectToServer;
 
 import java.awt.event.*;
 import java.awt.Font;
@@ -17,6 +18,7 @@ public class Logingui extends JFrame{
 	private JLabel  lblNewLabel_2;
 	private JLabel lblNewLabel;
 	   private JButton btnNewButton;
+	   Registergui reg= new Registergui();
 		public Logingui(){
 			setTitle("log in page");
 			frame1();
@@ -71,7 +73,7 @@ public class Logingui extends JFrame{
 			 JButton forgetpass = new JButton("Forget Password");
 			 forgetpass.addActionListener(new ActionListener() {
 			 	public void actionPerformed(ActionEvent arg0) {
-			 		
+			 		ConnectToServer.Checkpassword(myApp.getUsername());
 			 		
 			 		
 			 		
@@ -95,11 +97,18 @@ public class Logingui extends JFrame{
 			 
 			 btnNewButton.addActionListener(myApp.getInstance());
 		 }
+		 
 			public String getTxtUserhere() {
 				return txtUserhere.getText().toString();
+				
+				
 			}
 			public String getTxtPassword() {
 				return txtPassword.getText().toString();
 			}
+			public void setTxtPassword( String password) {
+				//txtPassword.getText().toString()= ConnectToServer.Checkpassword(myApp.getUsername());
+			}
+			
 	}
 

@@ -22,7 +22,7 @@ import checkme3.Registergui;
 	 private static final int newinfo = 0;
 
 	private static myApp instance = null;
-	 	
+	 	private static String username ;
 		Historygui history =new Historygui();
 		Aboutusgui  aboutus =new Aboutusgui();
 		Checkfeedbackgui checkfeedback= new Checkfeedbackgui();
@@ -32,6 +32,7 @@ import checkme3.Registergui;
 		static Logingui login=null;
 		Check check=new Check();
 
+		
 		
 		
 		JPanel panel=null;
@@ -79,6 +80,7 @@ import checkme3.Registergui;
 			   System.out.println(" please enter the details in two feilds");
 				login.dispose();
 			    login=new Logingui();
+			    
 			   
 			}
 
@@ -89,6 +91,8 @@ import checkme3.Registergui;
 			 mainFarame=new MainFramegui();
 			login.dispose();
 			}
+			myApp.setUsername(login.getTxtUserhere());
+			
 			
 			break;
 			
@@ -156,6 +160,12 @@ import checkme3.Registergui;
 		}
 
 		
+	}
+	public static String getUsername() {
+		return username;
+	}
+	public static void setUsername(String username) {
+		myApp.username = username;
 	}
 
 }

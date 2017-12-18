@@ -17,6 +17,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import Utils.MyTableModel;
+import application.myApp;
 import checkmeController.ConnectToServer;
 import checkmeController.Check;
 
@@ -103,7 +104,7 @@ public class Checkfeedbackgui  extends JPanel  {
 		JsonParser parser = new JsonParser();
 		
 		JsonArray arr = new JsonArray();
-		JsonObject jsnobject = (JsonObject) parser.parse(ConnectToServer.getCheckhistory("ameer"));
+		JsonObject jsnobject = (JsonObject) parser.parse(ConnectToServer.getCheckhistory(myApp.getUsername()));
 
 		JsonArray jsonArray = jsnobject.getAsJsonArray("Checks");
 		for (int i = 0; i < jsonArray.size(); i++) {
