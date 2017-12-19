@@ -18,6 +18,7 @@ public class Logingui extends JFrame{
 	private JLabel  lblNewLabel_2;
 	private JLabel lblNewLabel;
 	   private JButton btnNewButton;
+		private Logingui thisref=this;
 	   Registergui reg= new Registergui();
 		public Logingui(){
 			setTitle("log in page");
@@ -73,8 +74,11 @@ public class Logingui extends JFrame{
 			 JButton forgetpass = new JButton("Forget Password");
 			 forgetpass.addActionListener(new ActionListener() {
 			 	public void actionPerformed(ActionEvent arg0) {
-			 		ConnectToServer.Checkpassword(myApp.getUsername());
-			 		
+			 	
+			 		 
+			 			
+			 			thisref.setTxtPassword(ConnectToServer.Checkpassword(myApp.getEmail()));
+					
 			 		
 			 		
 			 		
@@ -106,9 +110,11 @@ public class Logingui extends JFrame{
 			public String getTxtPassword() {
 				return txtPassword.getText().toString();
 			}
-			public void setTxtPassword( String password) {
-				//txtPassword.getText().toString()= ConnectToServer.Checkpassword(myApp.getUsername());
+			public void setTxtPassword(String password) {
+				
+				 this.txtPassword.setText(password);
 			}
+		
 			
 	}
 

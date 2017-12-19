@@ -111,14 +111,14 @@ public class ConnectToServer {
 	}
 	  
 
-	public static String Checkpassword(String username)
+	public static String Checkpassword(String userName)
 	{
-		String email;
-		String POST_PARAMS="&username" +username;
+	     String email = null;
+		String POST_PARAMS="&userName" +userName;
 		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/forgotpassword.php");
         if (inputLine.contains("User Found"))
         {
-        	email=POST_PARAMS.toString();
+        	
         	return email;
         }
 		return inputLine;

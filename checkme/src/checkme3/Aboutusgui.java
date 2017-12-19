@@ -1,6 +1,7 @@
 package checkme3;
 
 import java.awt.Color;
+import java.nio.file.Path;
 
 import javax.swing.JPanel;
 
@@ -15,7 +16,9 @@ public class Aboutusgui extends JPanel {
 	setBackground(Color.RED);
 	setVisible(true);
 	
-	//Resources.getImageFromPath(C:\Users\win10\Desktop);
+	Resources imagegrab = new Resources();
+	
+	imagegrab.getImageFromPath("C:\\finalProject\\CheckME");
 	}
 
 }

@@ -23,6 +23,13 @@ import checkme3.Registergui;
 
 	private static myApp instance = null;
 	 	private static String username ;
+	 	private static String email ;
+		public static String getEmail() {
+			return email;
+		}
+		public static void setEmail(String email) {
+			myApp.email = email;
+		}
 		Historygui history =new Historygui();
 		Aboutusgui  aboutus =new Aboutusgui();
 		Checkfeedbackgui checkfeedback= new Checkfeedbackgui();
@@ -92,6 +99,7 @@ import checkme3.Registergui;
 			login.dispose();
 			}
 			myApp.setUsername(login.getTxtUserhere());
+			myApp.setEmail(login.getTxtUserhere());
 			
 			
 			break;
