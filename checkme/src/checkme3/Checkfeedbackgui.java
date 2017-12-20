@@ -40,7 +40,14 @@ public class Checkfeedbackgui  extends JPanel  {
 	private JTable tblToday;
 	private int ex_id;
 
+	
 
+
+	
+
+
+	
+	
 	public  Checkfeedbackgui ()
 	{
 		
@@ -53,7 +60,8 @@ public class Checkfeedbackgui  extends JPanel  {
 
 			tblToday = new JTable();
 			scrollPane.setViewportView(tblToday);
-			tblToday.setModel(new MyTableModel(new String[] { "CheckNum", "amount", "date", "checkStatus" }, new Object[][] {}));
+			tblToday.setModel(
+					new MyTableModel(new String[] { "CheckNum", "amount", "date", "checkStatus" }, new Object[][] {}));
 
 			JLabel lblTodaysExaminations = new JLabel("check feedback");
 			lblTodaysExaminations.setHorizontalAlignment(SwingConstants.CENTER);
