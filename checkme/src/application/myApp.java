@@ -32,7 +32,7 @@ import checkme3.Registergui;
 		}
 		Historygui history =new Historygui();
 		Aboutusgui  aboutus =new Aboutusgui();
-		Checkfeedbackgui checkfeedback= new Checkfeedbackgui();
+		Checkfeedbackgui checkfeedback;
 		Registergui register=new Registergui();
 		Validategui validate=new Validategui();
 		static MainFramegui mainFarame=null;
@@ -138,6 +138,7 @@ import checkme3.Registergui;
 			//if(ConnectToServer.Checkchecks( checkfeedback.getchecknumber(), checkfeedback.getamount(), checkfeedback.getdate(), checkfeedback.getid(), checkfeedback.getcheckstatus()))
 			if(panel!=null)
 			mainFarame.getContentPane().remove(panel);
+			checkfeedback=new Checkfeedbackgui();
 			mainFarame.getContentPane().add(checkfeedback);
 			panel=checkfeedback;
 			mainFarame.repaint();
