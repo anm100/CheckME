@@ -11,7 +11,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-public class Logingui extends JFrame{
+public class Logingui extends JPanel{
 
 	private JTextField txtUserhere;
 	private JTextField txtPassword;
@@ -21,46 +21,47 @@ public class Logingui extends JFrame{
 		private Logingui thisref=this;
 	   Registergui reg= new Registergui();
 		public Logingui(){
-			setTitle("log in page");
+			setName("log in page");
 			frame1();
 			setVisible(true);
+			 getRootPane().setLayout(null);
 		}
 		 public void frame1(){
 			 
-			 getContentPane().setLayout(null);
+			
 			 
 			 JLabel lblNewLabel = new JLabel("Username");
 			 lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 16));
 			 lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			 lblNewLabel.setBounds(47, 107, 118, 24);
-			 getContentPane().add(lblNewLabel);
+			 getRootPane().add(lblNewLabel);
 			 
 			 JLabel lblNewLabel_1 = new JLabel("Password");
 			 lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 15));
 			 lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 			
 			 lblNewLabel_1.setBounds(57, 153, 89, 24);
-			 getContentPane().add(lblNewLabel_1);
+			 getRootPane().add(lblNewLabel_1);
 			 
 			 JLabel lblNewLabel_2 = new JLabel("Log in - logo");
 			 lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 			 lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 15));
 			
 			 lblNewLabel_2.setBounds(155, 36, 137, 24);
-			 getContentPane().add(lblNewLabel_2);
+			 getRootPane().add(lblNewLabel_2);
 			 
 			 txtUserhere = new JTextField();
 			 txtUserhere.setHorizontalAlignment(SwingConstants.TRAILING);
 			 txtUserhere.setBounds(158, 103, 162, 35);
 			 txtUserhere.setVisible(true);
-			 getContentPane().add(txtUserhere);
+			 getRootPane().add(txtUserhere);
 			 txtUserhere.setColumns(10);
 			 
 			 txtPassword = new JTextField();
 			 txtPassword.setHorizontalAlignment(SwingConstants.TRAILING);
 			 txtPassword.setBounds(158, 148, 162, 35);
 			 txtPassword.setVisible(true);
-			 getContentPane().add(txtPassword);
+			 getRootPane().add(txtPassword);
 			 txtPassword.setColumns(10);
 			 
 			 JButton btnNewButton = new JButton("Log in");
@@ -69,7 +70,7 @@ public class Logingui extends JFrame{
 			 btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 19));
 			 btnNewButton.setBounds(183, 208, 89, 35);
 			 //btnNewButton.setVisible(true);
-			 getContentPane().add(btnNewButton);
+			 getRootPane().add(btnNewButton);
 			 
 			 JButton forgetpass = new JButton("Forget Password");
 			 forgetpass.addActionListener(new ActionListener() {
@@ -87,14 +88,14 @@ public class Logingui extends JFrame{
 			 });
 			 forgetpass.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 			 forgetpass.setBounds(149, 269, 155, 23);
-			 getContentPane().add(forgetpass);
+			 getRootPane().add(forgetpass);
 			 
 			 JButton btnRegister = new JButton("Register");
 			 btnRegister.addActionListener(myApp.getInstance());
 			 btnRegister.setActionCommand("_register");
 			 btnRegister.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 			 btnRegister.setBounds(149, 305, 155, 23);
-			 getContentPane().add(btnRegister);
+			 getRootPane().add(btnRegister);
 			
 			setSize(433, 399);
 			 
@@ -113,6 +114,10 @@ public class Logingui extends JFrame{
 			public void setTxtPassword(String password) {
 				
 				 this.txtPassword.setText(password);
+			}
+			public void dispose() {
+			this.dispose();
+				
 			}
 		
 			

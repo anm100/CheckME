@@ -52,7 +52,7 @@ public class FeedbackGUI  {
 	public FeedbackGUI(String hashid) {
 		initialize(hashid);
 		
-		disID.setVisible(true);
+	
 	}
 
 
@@ -211,6 +211,7 @@ public class FeedbackGUI  {
 		disID.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		disID.setLocationRelativeTo(null);
+		disID.setVisible(true);
 
 	}
 	public String getcheckstatus2() {
