@@ -78,7 +78,7 @@ public class Registergui extends JPanel {
 	finish.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			ConnectToServer.connectwriting(username.getText().toString(),pass.getText().toString(), mail.getText().toString());
-
+			
 		}
 	});
 	finish.setBounds(142, 242, 89, 23);

@@ -19,8 +19,10 @@ public class Logingui extends JFrame{
 	private JLabel lblNewLabel;
 	   private JButton btnNewButton;
 		private Logingui thisref=this;
-	   Registergui reg= new Registergui();
+		static MainFramegui mainFarame=null;
+
 		public Logingui(){
+
 			setTitle("log in page");
 			frame1();
 			setVisible(true);
@@ -76,11 +78,10 @@ public class Logingui extends JFrame{
 			 	public void actionPerformed(ActionEvent arg0) {
 			 	
 			 		 
-			 			
-			 			thisref.setTxtPassword(ConnectToServer.Checkpassword(myApp.getEmail()));
+			 	
 					
 			 		
-			 		
+			 	
 			 		
 			 		
 			 	}
@@ -90,16 +91,26 @@ public class Logingui extends JFrame{
 			 getContentPane().add(forgetpass);
 			 
 			 JButton btnRegister = new JButton("Register");
+			 btnRegister.addActionListener(new ActionListener() {
+				 	public void actionPerformed(ActionEvent arg0) {
+				 	
+				 		 
+			
+				 		
+				 		
+				 	}
+				 });
+		
 			 btnRegister.addActionListener(myApp.getInstance());
-			 btnRegister.setActionCommand("_register");
+			 btnRegister.setActionCommand("register");
 			 btnRegister.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 			 btnRegister.setBounds(149, 305, 155, 23);
 			 getContentPane().add(btnRegister);
 			
 			setSize(433, 399);
 			 
-			 
 			 btnNewButton.addActionListener(myApp.getInstance());
+			 setVisible(true);
 		 }
 		 
 			public String getTxtUserhere() {

@@ -82,7 +82,8 @@ public class Checkfeedbackgui  extends JPanel  {
 					
                     check=thisref.arr.get(row );
                     System.out.println(check.getCheckNum());
-                    FeedbackGUI ind=new FeedbackGUI(check.getCheckNum());
+                   FeedbackGUI ind=new FeedbackGUI(check.getCheckNum());
+                    
                     ind.getFrame();
 
 

@@ -111,21 +111,7 @@ public class ConnectToServer {
 	}
 	  
 
-	public static String Checkpassword(String userName)
-	{
-	     String email = null;
-		String POST_PARAMS="&userName" +userName;
-		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/forgotpassword.php");
-        if (inputLine.contains("User Found"))
-        {
-        	
-        	return email;
-        }
-		return inputLine;
-        
-		
-		
-	}
+	
 	
 	
 	 
@@ -150,7 +136,12 @@ public class ConnectToServer {
 		
        
 	}
-	
+	public static String  getforgetpassword(String mail)
+	{
+		String POST_PARAMS="&mail" +mail;
+		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/forgotpassword.php");
+		return inputLine;
+	}
 	
 	public static String  getCheckhistory(String username)
 	{

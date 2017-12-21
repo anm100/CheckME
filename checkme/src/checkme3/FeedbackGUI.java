@@ -210,7 +210,7 @@ public class FeedbackGUI  {
 		
 		disID.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-		disID.setLocationRelativeTo(null);
+		//disID.setLocationRelativeTo(null);
 
 	}
 	public String getcheckstatus2() {

@@ -18,18 +18,14 @@ import checkmeController.ConnectToServer;
 import checkme3.Aboutusgui;
 import checkme3.Checkfeedbackgui;
 import checkme3.Registergui;
+import javax.swing.JTextArea;
  public class myApp  implements  ActionListener {
 	 private static final int newinfo = 0;
 
 	private static myApp instance = null;
 	 	private static String username ;
-	 	private static String email ;
-		public static String getEmail() {
-			return email;
-		}
-		public static void setEmail(String email) {
-			myApp.email = email;
-		}
+	 	
+	
 		Historygui history =new Historygui();
 		Aboutusgui  aboutus =new Aboutusgui();
 		Checkfeedbackgui checkfeedback;
@@ -71,6 +67,7 @@ import checkme3.Registergui;
             //java.util.logging.Logger.getLogger(PC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 		 login=new Logingui();
+		 login.getContentPane().setLayout(null);
 	 
 		
 
@@ -83,26 +80,46 @@ import checkme3.Registergui;
 		{
 		case "LogIn":
 			if(login.getTxtUserhere().isEmpty()||login.getTxtPassword().isEmpty())
-			{
+			   {
 			   System.out.println(" please enter the details in two feilds");
 				login.dispose();
-			    login=new Logingui();
+				 login=new Logingui();
 			    
 			   
-			}
+			    }
 
-			else if(ConnectToServer.Checkuser(login.getTxtUserhere(),login.getTxtPassword()))
+			else if(ConnectToServer.Checkuser(login.getTxtUserhere(),login.getTxtPassword())==false)
 			{
-				
-				
-			 mainFarame=new MainFramegui();
-			login.dispose();
+				 mainFarame=new MainFramegui();
+				   if(panel!=null)
+				   {
+					
+					mainFarame.getContentPane().remove(panel);
+					mainFarame.getContentPane().add(register);
+					panel=aboutus;
+					mainFarame.repaint();
+				   }
+				   
+					else
+					{
+						mainFarame.getContentPane().add(register);
+						panel=register;
+						mainFarame.repaint();
+						 login.dispose();
+						
+					}
 			}
+			
+			
+			else 
+			{
+				  mainFarame=new MainFramegui();
+				  login.dispose();
+			}
+		
 			myApp.setUsername(login.getTxtUserhere());
-			myApp.setEmail(login.getTxtUserhere());
-			
-			
 			break;
+		
 			
 		case "about us":
 			if(panel!=null)
@@ -111,29 +128,7 @@ import checkme3.Registergui;
 			panel=aboutus;
 			mainFarame.repaint();
 			break;
-		case "_register":
-				mainFarame=new MainFramegui();
-				if(panel!=null)
-				{
-					 
-			mainFarame.getContentPane().remove(panel);
-			mainFarame.getContentPane().add(register);
-			panel=register;
-			mainFarame.repaint();
-				
-			login.dispose();
-				}
-			else
-			{
-			
-				mainFarame.getContentPane().add(register);
-				panel=register;
-				mainFarame.repaint();
-				login.dispose();
 		
-			}
-			
-			break;
 		case "check feedback":
 			//if(ConnectToServer.Checkchecks( checkfeedback.getchecknumber(), checkfeedback.getamount(), checkfeedback.getdate(), checkfeedback.getid(), checkfeedback.getcheckstatus()))
 			if(panel!=null)
@@ -176,5 +171,4 @@ import checkme3.Registergui;
 	public static void setUsername(String username) {
 		myApp.username = username;
 	}
-
 }
