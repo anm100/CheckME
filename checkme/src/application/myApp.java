@@ -11,6 +11,7 @@ import javax.swing.UIManager;
 import checkme3.Historygui;
 import checkme3.FeedbackGUI;
 import checkme3.Logingui;
+import checkme3.MainFrameLogin;
 import checkme3.MainFramegui;
 import checkme3.Validategui;
 import checkmeController.Check;
@@ -32,6 +33,7 @@ import javax.swing.JTextArea;
 		Registergui register=new Registergui();
 		Validategui validate=new Validategui();
 		static MainFramegui mainFarame=null;
+		static MainFrameLogin mainFrame=null;
 		static Logingui login=null;
 		Check check=new Check();
 
@@ -90,22 +92,24 @@ import javax.swing.JTextArea;
 
 			else if(ConnectToServer.Checkuser(login.getTxtUserhere(),login.getTxtPassword())==false)
 			{
-				 mainFarame=new MainFramegui();
+				 mainFrame=new MainFrameLogin();
 				   if(panel!=null)
 				   {
 					
-					mainFarame.getContentPane().remove(panel);
-					mainFarame.getContentPane().add(register);
-					panel=aboutus;
-					mainFarame.repaint();
+					mainFrame.getContentPane().remove(panel);
+					mainFrame.getContentPane().add(register);
+					panel=register;
+					mainFrame.repaint();
+					 login.dispose();
 				   }
 				   
 					else
 					{
-						mainFarame.getContentPane().add(register);
+						mainFrame.getContentPane().add(register);
 						panel=register;
-						mainFarame.repaint();
+						mainFrame.repaint();
 						 login.dispose();
+						
 						
 					}
 			}

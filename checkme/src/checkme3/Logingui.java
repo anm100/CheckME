@@ -20,7 +20,11 @@ public class Logingui extends JFrame{
 	   private JButton btnNewButton;
 		private Logingui thisref=this;
 		static MainFramegui mainFarame=null;
-
+		static MainFrameLogin mainFrame=null;
+		static Logingui login=null;
+		Registergui register= new Registergui();
+		JPanel panel=null;
+		
 		public Logingui(){
 
 			setTitle("log in page");
@@ -79,8 +83,8 @@ public class Logingui extends JFrame{
 			 	
 			 		 
 			 	
-					
-			 		
+					//ConnectToServer.getforgetpassword(mail);
+			 	
 			 	
 			 		
 			 		
@@ -93,10 +97,34 @@ public class Logingui extends JFrame{
 			 JButton btnRegister = new JButton("Register");
 			 btnRegister.addActionListener(new ActionListener() {
 				 	public void actionPerformed(ActionEvent arg0) {
+				 		
+				 		 mainFrame=new MainFrameLogin();
+						   if(panel!=null)
+						   {
+							
+							mainFrame.getContentPane().remove(panel);
+							mainFrame.getContentPane().add(register);
+							panel=register;
+							
+							
+							mainFrame.repaint();
+						
+							thisref.dispose();
+						   }
+						   
+							else
+							{
+								mainFrame.getContentPane().add(register);
+								panel=register;
+								
+                           
+                              mainFrame.repaint();
+                              thisref.dispose();
+								
+							}
 				 	
 				 		 
-			
-				 		
+				 
 				 		
 				 	}
 				 });

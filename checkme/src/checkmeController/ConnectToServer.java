@@ -98,14 +98,14 @@ public class ConnectToServer {
  	    }
 		return null;
 	}
-	public static  void connectwriting (String username ,String pass , String mail  )
+	public static String connectwriting (String username ,String pass , String mail  )
 	{
 		String POST_PARAMS="&username=" +username+"&password="+pass+"&mail="+mail;
 		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/register.php");
 		
 		System.out.println(inputLine);
 		  
-			 
+			return inputLine;
 		
 
 	}

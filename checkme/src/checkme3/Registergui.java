@@ -16,6 +16,9 @@ import java.awt.event.ActionEvent;
 
 public class Registergui extends JPanel {
 	private JTextField username;
+	private Registergui thisref=this;
+       MainFrameLogin mainFrame=null;
+   	JPanel panel=null;
 	public JTextField getUsername() {
 		return username;
 	}
@@ -77,7 +80,47 @@ public class Registergui extends JPanel {
 	JButton finish = new JButton("finish");
 	finish.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			ConnectToServer.connectwriting(username.getText().toString(),pass.getText().toString(), mail.getText().toString());
+			if((ConnectToServer.connectwriting(username.getText().toString(),pass.getText().toString(), mail.getText().toString())=="register ok"))
+			{
+			
+		     thisref.setVisible(false);
+		
+			new Logingui();
+			}
+			else
+			{
+			
+				
+				 mainFrame=new MainFrameLogin();
+				   if(panel!=null)
+				   {
+					
+					mainFrame.getContentPane().remove(panel);
+					mainFrame.getContentPane().add(thisref);
+					panel=thisref;
+					
+					
+					mainFrame.repaint();
+					new Logingui();
+					
+				   }
+				   
+					else
+					{
+						mainFrame.getContentPane().add(thisref);
+						panel=thisref;
+						
+                 
+                    mainFrame.repaint();
+                	new Logingui();
+						
+					}
+		 	
+		 		 
+		 
+		 		
+		 	
+			}
 			
 		}
 	});
