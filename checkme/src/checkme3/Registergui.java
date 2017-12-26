@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
 public class Registergui extends JPanel {
 	private JTextField username;
 	private Registergui thisref=this;
-       MainFrameLogin mainFrame=null;
+    
    	JPanel panel=null;
 	public JTextField getUsername() {
 		return username;
@@ -53,18 +53,21 @@ public class Registergui extends JPanel {
 	setBackground(Color.orange);
 	
 	JLabel register = new JLabel("register");
-	register.setFont(new Font("Times New Roman", Font.BOLD, 24));
+	register.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 25));
 	register.setHorizontalAlignment(SwingConstants.CENTER);
 	register.setBounds(95, 26, 255, 26);
 	add(register);
 	
 	JLabel firstname = new JLabel("username");
+	firstname.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 	firstname.setHorizontalAlignment(SwingConstants.CENTER);
-	firstname.setBounds(84, 100, 64, 14);
+	firstname.setBounds(68, 97, 80, 33);
 	add(firstname);
 	
 	JLabel password = new JLabel("password");
-	password.setBounds(95, 141, 53, 14);
+	password.setHorizontalAlignment(SwingConstants.CENTER);
+	password.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+	password.setBounds(68, 141, 80, 30);
 	add(password);
 	
 	username = new JTextField();
@@ -78,64 +81,50 @@ public class Registergui extends JPanel {
 	pass.setColumns(10);
 	
 	JButton finish = new JButton("finish");
+	finish.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 	finish.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			if((ConnectToServer.connectwriting(username.getText().toString(),pass.getText().toString(), mail.getText().toString())=="register ok"))
 			{
 			
-		     thisref.setVisible(false);
-		
-			new Logingui();
+		    System.out.println("register ok");
 			}
-			else
-			{
 			
+			else{
 				
-				 mainFrame=new MainFrameLogin();
-				   if(panel!=null)
-				   {
-					
-					mainFrame.getContentPane().remove(panel);
-					mainFrame.getContentPane().add(thisref);
-					panel=thisref;
-					
-					
-					mainFrame.repaint();
-					new Logingui();
-					
-				   }
-				   
-					else
-					{
-						mainFrame.getContentPane().add(thisref);
-						panel=thisref;
-						
-                 
-                    mainFrame.repaint();
-                	new Logingui();
-						
-					}
-		 	
-		 		 
-		 
-		 		
-		 	
+				
+				 System.out.println("insert correct details again!!");
+				
 			}
+
 			
 		}
 	});
-	finish.setBounds(142, 242, 89, 23);
+	finish.setBounds(109, 239, 89, 33);
 	add(finish);
 	
 	JLabel email = new JLabel("email");
+	email.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 	email.setHorizontalAlignment(SwingConstants.CENTER);
-	email.setBounds(95, 182, 46, 14);
+	email.setBounds(68, 182, 73, 17);
 	add(email);
 	
 	mail = new JTextField();
 	mail.setBounds(207, 179, 86, 20);
 	add(mail);
 	mail.setColumns(10);
+	
+	JButton back1 = new JButton("back");
+	back1.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		
+			new Logingui();
+			thisref.setVisible(false);
+		}
+	});
+	back1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+	back1.setBounds(224, 239, 89, 33);
+	add(back1);
 	setVisible(true);
 	}
 

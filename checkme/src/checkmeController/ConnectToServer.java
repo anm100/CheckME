@@ -110,7 +110,17 @@ public class ConnectToServer {
 
 	}
 	  
+	public static String connectwritingcheck (String checknum ,String banknum , String branchnum, String accountnum)
+	{
+		String POST_PARAMS="&checknum=" +checknum + "&banknum=" +banknum+ "&branchnum=" + branchnum+ "&accountnum=" +accountnum;
+		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/validate.php");
+		
+		System.out.println(inputLine);
+		  
+			return inputLine;
+		
 
+	}
 	
 	
 	
@@ -121,6 +131,7 @@ public class ConnectToServer {
 		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/login.php");
         if (inputLine.contains("User Found")) 
         	return true;
+        else
 		return false;
 	}
 	
@@ -139,8 +150,14 @@ public class ConnectToServer {
 	public static String  getforgetpassword(String mail)
 	{
 		String POST_PARAMS="&mail" +mail;
-		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/forgotpassword.php");
-		return inputLine;
+		String password = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/forgotpassword.php");
+		return password;
+	}
+	public static String  getforgetmail(String username)
+	{
+		String POST_PARAMS="&username" +username;
+		String mail = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/login.php");
+		return mail;
 	}
 	
 	public static String  getCheckhistory(String username)
@@ -167,7 +184,7 @@ public class ConnectToServer {
 	
 	public static String  savestatusCheckfeedback(String hash,String amount,String date,String checkstatus)
 	{
-		String POST_PARAMS="&hash=" +hash+"&amount=" +amount+"&date=" +date+"&checkstatus=" +checkstatus;;
+		String POST_PARAMS="&hash=" +hash+"&amount=" +amount+"&date=" +date+"&checkstatus=" +checkstatus;
 		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/update_check.php");
 		return inputLine;
 	}

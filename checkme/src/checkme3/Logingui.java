@@ -20,14 +20,14 @@ public class Logingui extends JFrame{
 	   private JButton btnNewButton;
 		private Logingui thisref=this;
 		static MainFramegui mainFarame=null;
-		static MainFrameLogin mainFrame=null;
+	
 		static Logingui login=null;
 		Registergui register= new Registergui();
 		JPanel panel=null;
 		
 		public Logingui(){
 
-			setTitle("log in page");
+		
 			frame1();
 			setVisible(true);
 		}
@@ -48,11 +48,12 @@ public class Logingui extends JFrame{
 			 lblNewLabel_1.setBounds(57, 153, 89, 24);
 			 getContentPane().add(lblNewLabel_1);
 			 
-			 JLabel lblNewLabel_2 = new JLabel("Log in - logo");
+			 JLabel lblNewLabel_2 = new JLabel("");
+			 lblNewLabel_2.setIcon(new ImageIcon("C:\\\\finalProject\\\\CheckME\\\\checkme\\\\src\\\\image\\\\checkmelogo.png"));
 			 lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 			 lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 15));
 			
-			 lblNewLabel_2.setBounds(155, 36, 137, 24);
+			 lblNewLabel_2.setBounds(10, 11, 397, 83);
 			 getContentPane().add(lblNewLabel_2);
 			 
 			 txtUserhere = new JTextField();
@@ -83,7 +84,7 @@ public class Logingui extends JFrame{
 			 	
 			 		 
 			 	
-					//ConnectToServer.getforgetpassword(mail);
+			 		 txtPassword.setText(ConnectToServer.getforgetpassword(myApp.getMail()));
 			 	
 			 	
 			 		
@@ -98,32 +99,9 @@ public class Logingui extends JFrame{
 			 btnRegister.addActionListener(new ActionListener() {
 				 	public void actionPerformed(ActionEvent arg0) {
 				 		
-				 		 mainFrame=new MainFrameLogin();
-						   if(panel!=null)
-						   {
-							
-							mainFrame.getContentPane().remove(panel);
-							mainFrame.getContentPane().add(register);
-							panel=register;
-							
-							
-							mainFrame.repaint();
-						
-							thisref.dispose();
-						   }
-						   
-							else
-							{
-								mainFrame.getContentPane().add(register);
-								panel=register;
-								
-                           
-                              mainFrame.repaint();
-                              thisref.dispose();
-								
-							}
+				 		
+				 		
 				 	
-				 		 
 				 
 				 		
 				 	}

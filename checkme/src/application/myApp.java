@@ -11,7 +11,7 @@ import javax.swing.UIManager;
 import checkme3.Historygui;
 import checkme3.FeedbackGUI;
 import checkme3.Logingui;
-import checkme3.MainFrameLogin;
+
 import checkme3.MainFramegui;
 import checkme3.Validategui;
 import checkmeController.Check;
@@ -25,7 +25,7 @@ import javax.swing.JTextArea;
 
 	private static myApp instance = null;
 	 	private static String username ;
-	 	
+	 	private static String mail ;
 	
 		Historygui history =new Historygui();
 		Aboutusgui  aboutus =new Aboutusgui();
@@ -33,9 +33,9 @@ import javax.swing.JTextArea;
 		Registergui register=new Registergui();
 		Validategui validate=new Validategui();
 		static MainFramegui mainFarame=null;
-		static MainFrameLogin mainFrame=null;
+		
 		static Logingui login=null;
-		Check check=new Check();
+		
 
 		
 		
@@ -92,26 +92,7 @@ import javax.swing.JTextArea;
 
 			else if(ConnectToServer.Checkuser(login.getTxtUserhere(),login.getTxtPassword())==false)
 			{
-				 mainFrame=new MainFrameLogin();
-				   if(panel!=null)
-				   {
-					
-					mainFrame.getContentPane().remove(panel);
-					mainFrame.getContentPane().add(register);
-					panel=register;
-					mainFrame.repaint();
-					 login.dispose();
-				   }
-				   
-					else
-					{
-						mainFrame.getContentPane().add(register);
-						panel=register;
-						mainFrame.repaint();
-						 login.dispose();
-						
-						
-					}
+				
 			}
 			
 			
@@ -122,6 +103,7 @@ import javax.swing.JTextArea;
 			}
 		
 			myApp.setUsername(login.getTxtUserhere());
+			myApp.setMail(ConnectToServer.getforgetmail(login.getTxtUserhere()));
 			break;
 		
 			
@@ -134,7 +116,7 @@ import javax.swing.JTextArea;
 			break;
 		
 		case "check feedback":
-			//if(ConnectToServer.Checkchecks( checkfeedback.getchecknumber(), checkfeedback.getamount(), checkfeedback.getdate(), checkfeedback.getid(), checkfeedback.getcheckstatus()))
+			
 			if(panel!=null)
 			mainFarame.getContentPane().remove(panel);
 			checkfeedback=new Checkfeedbackgui();
@@ -168,6 +150,13 @@ import javax.swing.JTextArea;
 		}
 
 		
+	}
+	
+	public static String getMail() {
+		return mail;
+	}
+	public static void setMail(String mail) {
+		myApp.mail = mail;
 	}
 	public static String getUsername() {
 		return username;
