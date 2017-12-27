@@ -110,9 +110,9 @@ public class ConnectToServer {
 
 	}
 	  
-	public static String connectwritingcheck (String checknum ,String banknum , String branchnum, String accountnum)
+	public static String connectwritingcheck (String checknum ,String banknum , String branchnum, String accountnum,String amount,String date,String personid,String   uploader, String  hash)
 	{
-		String POST_PARAMS="&checknum=" +checknum + "&banknum=" +banknum+ "&branchnum=" + branchnum+ "&accountnum=" +accountnum;
+		String POST_PARAMS="&checknum=" +checknum + "&banknum=" +banknum+ "&branchnum=" + branchnum+ "&accountnum=" +accountnum+"&amount=" + amount+ "&date=" + date+ "&personid=" + personid+ "&uploader=" + uploader + "&hash=" + hash;
 		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/validate.php");
 		
 		System.out.println(inputLine);

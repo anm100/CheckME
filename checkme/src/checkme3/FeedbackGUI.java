@@ -66,12 +66,10 @@ public class FeedbackGUI  {
 		honor.setBounds(6, 265, 109, 23);
 		disID.getContentPane().add(honor);
 		rejectedtec = new JRadioButton("reject technically");
-		rejectedtec.setSelected(true);
 		rejectedtec.setBounds(6, 291, 109, 23);
 		disID.getContentPane().add(rejectedtec);
 		
 		rejectnomoney = new JRadioButton("reject not enough money");
-		rejectnomoney.setSelected(true);
 		rejectnomoney.setBounds(6, 317, 123, 23);
 		disID.getContentPane().add(rejectnomoney);
 		

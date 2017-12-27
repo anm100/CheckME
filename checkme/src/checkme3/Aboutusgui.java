@@ -19,20 +19,20 @@ public class Aboutusgui extends JPanel {
 	 
 	public Aboutusgui()
 	{
-	setBounds(89, 124, 616, 423);
+	setBounds(89, 124, 396, 423);
 	setLayout(null);
-	setBackground(Color.red);
+	setBackground(Color.white);
 	
-	JPanel panel = new JPanel();
-	panel.setBounds(50, 50, 596, 401);
-	add(panel);
-	panel.setLayout(null);
+//	JPanel panel = new JPanel();
+//	panel.setBounds(50, 50, 596, 401);
+//	add(panel);
+//	panel.setLayout(null);
 	
 	JLabel lblNewLabel = new JLabel("");
-	lblNewLabel.setBounds(-17, 0, 603, 412);
-	panel.add(lblNewLabel);
-	lblNewLabel.setIcon(new Resources().getImageFromPath("C:\\finalProject\\CheckME\\checkme\\src\\image\\layout-2017-12-18-225350.png"));
-	setVisible(true);
+	lblNewLabel.setIcon(new ImageIcon("C:\\\\\\\\finalProject\\\\\\\\CheckME\\\\\\\\checkme\\\\\\\\src\\\\\\\\image\\\\\\\\rsz_layout-2017-12-18-225350.jpg"));
+	lblNewLabel.setBounds(0, 0, 386, 423);
+	lblNewLabel.setVisible(true);
+	add(lblNewLabel);
 
 	
 

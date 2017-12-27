@@ -26,6 +26,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class Historygui extends JPanel {
 	private JTable tblToday;
@@ -36,7 +37,7 @@ public class Historygui extends JPanel {
 		setLayout(null);
 		setBackground(Color.LIGHT_GRAY);
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 127, 741, 409);
+		scrollPane.setBounds(10, 117, 741, 409);
 		add(scrollPane);
 
 		tblToday = new JTable();
@@ -45,7 +46,10 @@ public class Historygui extends JPanel {
 				new MyTableModel(new String[] { "CheckNum", "amount", "date", "checkStatus" }, new Object[][] {}));
 
 		JLabel lblTodaysExaminations = new JLabel("history");
-		lblTodaysExaminations.setBounds(0, 108, 170, 14);
+		lblTodaysExaminations.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 28));
+		lblTodaysExaminations.setForeground(Color.CYAN);
+		lblTodaysExaminations.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTodaysExaminations.setBounds(286, 40, 170, 46);
 		add(lblTodaysExaminations);
 
 		fillExaminations(tblToday);

@@ -6,6 +6,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+
+import application.myApp;
+
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -16,6 +19,9 @@ public class Validategui extends JPanel {
 	private JTextField banknum1;
 	private JTextField branchnum1;
 	private JTextField accountnum1;
+	private JTextField date;
+	private JTextField amount;
+	private JTextField id;
 	String[] reader;
 	public Validategui()
 	{
@@ -54,12 +60,13 @@ public class Validategui extends JPanel {
 	save1.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			
-			ConnectToServer.connectwritingcheck(checknum1.getText().toString(), banknum1.getText().toString(), branchnum1.getText().toString(), accountnum1.getText().toString());
+			System.out.println(ConnectToServer.connectwritingcheck(checknum1.getText().toString(), banknum1.getText().toString(), branchnum1.getText().toString(), accountnum1.getText().toString(),amount.getText().toString(),date.getText().toString(),id.getText().toString(),myApp.getUsername(),reader.toString()));
+			//System.out.println("check is entered");
+			
 		}
 	});
-	save1.setEnabled(false);
 	save1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-	save1.setBounds(231, 296, 122, 23);
+	save1.setBounds(230, 390, 122, 23);
 	save1.setVisible(false);
 	add(save1);
 	
@@ -68,7 +75,7 @@ public class Validategui extends JPanel {
 	scan1.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			
-			reader=CSVReader.reader();
+			 reader=CSVReader.reader();
 			if(reader!=null)
 			{
 			checknum1.setText(reader[0]);
@@ -76,9 +83,10 @@ public class Validategui extends JPanel {
 			branchnum1.setText(reader[2]);
 			accountnum1.setText(reader[3]);
 			
-			
 			save1.setVisible(true);
-			save1.enable(true);
+			
+			
+			CSVReader.delete();
 			}
 			else
 			{
@@ -89,7 +97,7 @@ public class Validategui extends JPanel {
 			
 		}
 	});
-	scan1.setBounds(87, 296, 110, 23);
+	scan1.setBounds(86, 390, 110, 23);
 	add(scan1);
 	
 	JLabel banknum = new JLabel("bank num");
@@ -106,6 +114,7 @@ public class Validategui extends JPanel {
 	add(branchnum);
 	
 	JLabel accountnum = new JLabel("account num");
+	accountnum.setForeground(new Color(0, 0, 0));
 	accountnum.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 	accountnum.setHorizontalAlignment(SwingConstants.CENTER);
 	accountnum.setBounds(51, 229, 103, 29);
@@ -116,6 +125,46 @@ public class Validategui extends JPanel {
 	lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 	lblNewLabel_4.setBounds(176, 11, 222, 48);
 	add(lblNewLabel_4);
+	
+	JLabel date1 = new JLabel("date");
+	date1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+	date1.setHorizontalAlignment(SwingConstants.CENTER);
+	date1.setBounds(122, 294, 74, 23);
+	add(date1);
+	
+	date = new JTextField();
+	date.setBounds(230, 296, 86, 20);
+	add(date);
+	date.setColumns(10);
+	
+	JLabel amount1 = new JLabel("amount");
+	amount1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+	amount1.setHorizontalAlignment(SwingConstants.CENTER);
+	amount1.setBounds(122, 328, 74, 23);
+	add(amount1);
+	
+	amount = new JTextField();
+	amount.setBounds(230, 327, 86, 20);
+	add(amount);
+	amount.setColumns(10);
+	
+	JLabel massege = new JLabel("insert the date and the amount of the check");
+	massege.setForeground(Color.RED);
+	massege.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+	massege.setHorizontalAlignment(SwingConstants.CENTER);
+	massege.setBounds(36, 260, 380, 29);
+	add(massege);
+	
+	JLabel id1 = new JLabel("id");
+	id1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+	id1.setHorizontalAlignment(SwingConstants.CENTER);
+	id1.setBounds(142, 362, 46, 14);
+	add(id1);
+	
+	id = new JTextField();
+	id.setBounds(230, 359, 86, 20);
+	add(id);
+	id.setColumns(10);
 	setVisible(true);
 	}
 }

@@ -81,6 +81,8 @@ import javax.swing.JTextArea;
 		switch(e.getActionCommand())
 		{
 		case "LogIn":
+	
+		
 			if(login.getTxtUserhere().isEmpty()||login.getTxtPassword().isEmpty())
 			   {
 			   System.out.println(" please enter the details in two feilds");
@@ -89,11 +91,20 @@ import javax.swing.JTextArea;
 			    
 			   
 			    }
+			else if(!login.getTxtUserhere().isEmpty()&&login.getTxtPassword().isEmpty())
+			   {
+				myApp.setUsername(login.getTxtUserhere());
+				myApp.setMail(ConnectToServer.getforgetpassword((ConnectToServer.getforgetmail(login.getTxtUserhere()))));
+				
+				
+			   }
+			   
 
 			else if(ConnectToServer.Checkuser(login.getTxtUserhere(),login.getTxtPassword())==false)
 			{
 				
 			}
+			
 			
 			
 			else 
@@ -102,8 +113,8 @@ import javax.swing.JTextArea;
 				  login.dispose();
 			}
 		
-			myApp.setUsername(login.getTxtUserhere());
-			myApp.setMail(ConnectToServer.getforgetmail(login.getTxtUserhere()));
+		
+			
 			break;
 		
 			

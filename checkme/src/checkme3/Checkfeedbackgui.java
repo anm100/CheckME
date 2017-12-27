@@ -64,8 +64,10 @@ public class Checkfeedbackgui  extends JPanel  {
 					new MyTableModel(new String[] { "CheckNum", "amount", "date", "checkStatus" }, new Object[][] {}));
 
 			JLabel lblTodaysExaminations = new JLabel("check feedback");
+			lblTodaysExaminations.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 28));
+			lblTodaysExaminations.setForeground(Color.CYAN);
 			lblTodaysExaminations.setHorizontalAlignment(SwingConstants.CENTER);
-			lblTodaysExaminations.setBounds(209, 102, 170, 14);
+			lblTodaysExaminations.setBounds(247, 55, 256, 59);
 			add(lblTodaysExaminations);
 
 			fillExaminations(tblToday);
