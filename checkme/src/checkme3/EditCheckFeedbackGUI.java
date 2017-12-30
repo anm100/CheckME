@@ -109,11 +109,13 @@ public class EditCheckFeedbackGUI extends JFrame{
 			 
 			 datee = new JTextField();
 			 datee.setBounds(145, 76, 86, 20);
+			 
 			 datee.setText(check.getdate());
 			 panel_1.add(datee);
 			 datee.setColumns(10);
 			 
 			 checknum1 = new JTextField();
+			 checknum1.disable();
 			 checknum1.setBounds(145, 46, 86, 20);
 			 checknum1.setText(check.getCheckNum());
 			 panel_1.add(checknum1);
@@ -138,53 +140,22 @@ public class EditCheckFeedbackGUI extends JFrame{
 			 JButton button = new JButton("change status");
 			 button.addActionListener(new ActionListener() {
 			 	public void actionPerformed(ActionEvent e) {
-			 		JsonObject jsnobject;
-			 		JsonArray jsonArray;
-//					System.out.println(ConnectToServer.getCheckhistory(getchecknum1()));
+			 		System.out.println("start save check feedback");
+					String jsnobject3 =(String) ConnectToServer.savestatusCheckfeedback(getchecknum1(),getamount2(), getdatee(),getcheckstatus2());
+					System.out.println(jsnobject3);
+					
+					//////////////////
+			 		System.out.println("start save check history");
 
-//					
-//					
-					JsonArray arr2 = new JsonArray();
-					JsonObject jsnobject2 = (JsonObject) parser.parse(ConnectToServer.savehistorysCheckfeedback(getchecknum1(), getdatee(),getcheckstatus2()));
+					String jsnobject1 =(String) ConnectToServer.savehistorysCheckfeedback(getchecknum1(), getdatee(),getcheckstatus2());
+					System.out.println(jsnobject1);
+					thisref.dispose();
 
-					JsonArray jsonArray2 = jsnobject2.getAsJsonArray("Checks");
-					for (int i = 0; i < jsonArray2.size(); i++) {
-						JsonObject e2 = jsonArray2.get(i).getAsJsonObject();
-						
-						
-						thisref.arr.add(new Check(e2.get("hash").toString(),e2.get("amount").toString(),e2.get("date").toString(),e2.get("checkstatus").toString()));
-						ConnectToServer. savehistorysCheckfeedback(e2.get("hash").toString(),e2.get("date").toString(),e2.get("checkstatus").toString());	
-						setdatee(e2.get("date").toString());
-						setchecknum1(e2.get("hash").toString());
-						setcheckstatus2(e2.get("checkstatus").toString());
-					}
-					
-					System.out.println("add history for check"+jsonArray2.toString());
-					
-					
-					
-					
-					JsonArray arr3= new JsonArray();
-					JsonObject jsnobject3 = (JsonObject) parser.parse(ConnectToServer.savestatusCheckfeedback(getchecknum1(),getamount2(), getdatee(),getcheckstatus2()));
-
-					JsonArray jsonArray3 = jsnobject3.getAsJsonArray("Checks");
-					for (int i = 0; i < jsonArray3.size(); i++) {
-						JsonObject e1 = jsonArray3.get(i).getAsJsonObject();
-					    
-						//model.addRow(new Object[] { e.get("hash"),e.get("amount"),e.get("date"),e.get("checkstatus") });
-						
-						thisref.arr.add(new Check(e1.get("hash").toString(),e1.get("amount").toString(),e1.get("date").toString(),e1.get("checkstatus").toString()));
-						ConnectToServer.savestatusCheckfeedback(e1.get("hash").toString(),e1.get("amount").toString(),e1.get("date").toString(),e1.get("checkstatus").toString());
-						setdatee(e1.get("date").toString());
-						setchecknum1(e1.get("hash").toString());
-						setamount2(e1.get("amount").toString());
-						setcheckstatus2(e1.get("checkstatus").toString());
-					}
-					System.out.println("save status check"+jsonArray3.toString());
-					
-					
-					
 			 	}
+					
+
+					
+			 	
 			 });
 			 
 			 button.setBounds(102, 212, 139, 23);

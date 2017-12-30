@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 import checkme3.Historygui;
-import checkme3.FeedbackGUI;
 import checkme3.Logingui;
 
 import checkme3.MainFramegui;

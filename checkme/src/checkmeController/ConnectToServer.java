@@ -171,7 +171,7 @@ public class ConnectToServer {
 	public static String  savehistorysCheckfeedback(String hash,String date,String checkstatus)
 	{
 		String POST_PARAMS="&hash=" +hash+"&date=" +date+"&checkstatus=" +checkstatus;
-		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/Add_Check_History.php");
+		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/AddCheckHistory.php");
 		return inputLine;
 	}
 	
