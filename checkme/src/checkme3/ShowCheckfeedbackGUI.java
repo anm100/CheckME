@@ -27,11 +27,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class Checkfeedbackgui  extends JPanel  {
+public class ShowCheckfeedbackGUI  extends JPanel  {
     Check check=new Check();
     ArrayList <Check> arr = new ArrayList<Check>();
   
-	private Checkfeedbackgui thisref=this;
+	private ShowCheckfeedbackGUI thisref=this;
 	private JTextField amount1;
 	private JTextField date1;
 	private JTextField checknumber1;
@@ -41,14 +41,7 @@ public class Checkfeedbackgui  extends JPanel  {
 	private int ex_id;
 
 	
-
-
-	
-
-
-	
-	
-	public  Checkfeedbackgui ()
+	public  ShowCheckfeedbackGUI ()
 	{
 		
 			setBounds(45, 124, 471, 401);
@@ -61,7 +54,7 @@ public class Checkfeedbackgui  extends JPanel  {
 			tblToday = new JTable();
 			scrollPane.setViewportView(tblToday);
 			tblToday.setModel(
-					new MyTableModel(new String[] { "CheckNum", "amount", "date", "checkStatus" }, new Object[][] {}));
+					new MyTableModel(new String[] { "hashid", "amount", "date", "checkStatus" }, new Object[][] {}));
 
 			JLabel lblTodaysExaminations = new JLabel("check feedback");
 			lblTodaysExaminations.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 28));
@@ -83,10 +76,10 @@ public class Checkfeedbackgui  extends JPanel  {
 						return;
 					
                     check=thisref.arr.get(row );
-                    System.out.println(check.getCheckNum());
-                   FeedbackGUI ind=new FeedbackGUI(check.getCheckNum());
+                    EditCheckFeedbackGUI edit =new EditCheckFeedbackGUI(check);
+                //   FeedbackGUI ind=new FeedbackGUI(check.getCheckNum());
                     
-                    ind.getFrame();
+                  //  ind.getFrame();
 
 
 				}

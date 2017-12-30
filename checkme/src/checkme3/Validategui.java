@@ -59,9 +59,10 @@ public class Validategui extends JPanel {
 	JButton save1 = new JButton("save");
 	save1.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			
-			System.out.println(ConnectToServer.connectwritingcheck(checknum1.getText().toString(), banknum1.getText().toString(), branchnum1.getText().toString(), accountnum1.getText().toString(),amount.getText().toString(),date.getText().toString(),id.getText().toString(),myApp.getUsername(),reader.toString()));
-			//System.out.println("check is entered");
+			System.out.println(myApp.getUsername());
+			System.out.println(ConnectToServer.connectwritingcheck(checknum1.getText(), banknum1.getText(), branchnum1.getText(), accountnum1.getText(),amount.getText(),
+																	date.getText(),id.getText(),myApp.getUsername(),
+																	reader[0]+reader[1]+reader[2]+reader[3]));
 			
 		}
 	});

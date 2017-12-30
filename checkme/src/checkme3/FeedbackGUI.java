@@ -211,54 +211,5 @@ public class FeedbackGUI  {
 		//disID.setLocationRelativeTo(null);
 
 	}
-	public String getcheckstatus2() {
-		return checkstatus2.getText().toString();
-	}
-	public void setcheckstatus2 ( String checkstatus ) {
-		  this.checkstatus2.setText(checkstatus);
-		}
-	public String getamount2() {
-		return amount2.getText().toString();
-	}
-	public void setamount2 ( String amount ) {
-		  this.amount2.setText(amount);
-		}
-	public String getdatee() {
-		return datee.getText().toString();
-	}
-	public void setdatee ( String date ) {
-		  this.datee.setText(date);
-		}
-	public String getchecknum1() {
-		return checknum1.getText().toString();
-	}
-	public void setchecknum1 ( String CheckNumber ) {
-		  this.checknum1.setText(CheckNumber);
-		}
-	
-	
-	public JFrame getFrame() {
-		return disID;
-	}
-	public String getHonorSelected() {
-		return" honored";
-	}
-	public void setHonorSelected(boolean selected) {
-		honor.setSelected(selected);
-		honor.setText("honored");
-	}
-	public String getRejectedtecSelected() {
-		return "rejectedtechnacly";
-	}
-	public void setRejectedtecSelected(boolean selected_1) {
-		rejectedtec.setSelected(selected_1);
-		rejectedtec.setText("rejected technacely");
-	}
-	public String getRejectnomoneySelected() {
-		return "reject no enough money";
-	}
-	public void setRejectnomoneySelected(boolean selected_2) {
-		rejectnomoney.setSelected(selected_2);
-		rejectnomoney.setText(" reject no enough money");
-	}
+
 }

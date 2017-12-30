@@ -135,17 +135,12 @@ public class ConnectToServer {
 		return false;
 	}
 	
-	public static void Checkchecks( String CheckNum)
+	public static String getDatachecks( String CheckNum)
 	
 	{
-		String POST_PARAMS="&hash=" +CheckNum;
-		String inputLine1=connectget(POST_PARAMS,"http://majdy.waqet.net/majdy/get_check_details.php");
-		System.out.println(inputLine1);
-		
-		
-		
-		
-       
+		//String POST_PARAMS="&hash=" +CheckNum;
+		return connectget(CheckNum,"http://majdy.waqet.net/majdy/get_check_details.php");
+		 
 	}
 	public static String  getforgetpassword(String mail)
 	{

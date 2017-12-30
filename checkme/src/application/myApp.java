@@ -17,7 +17,7 @@ import checkme3.Validategui;
 import checkmeController.Check;
 import checkmeController.ConnectToServer;
 import checkme3.Aboutusgui;
-import checkme3.Checkfeedbackgui;
+import checkme3.ShowCheckfeedbackGUI;
 import checkme3.Registergui;
 import javax.swing.JTextArea;
  public class myApp  implements  ActionListener {
@@ -27,9 +27,9 @@ import javax.swing.JTextArea;
 	 	private static String username ;
 	 	private static String mail ;
 	
-		Historygui history =new Historygui();
+		Historygui history ;
 		Aboutusgui  aboutus =new Aboutusgui();
-		Checkfeedbackgui checkfeedback;
+		ShowCheckfeedbackGUI checkfeedback;
 		Registergui register=new Registergui();
 		Validategui validate=new Validategui();
 		static MainFramegui mainFarame=null;
@@ -82,7 +82,7 @@ import javax.swing.JTextArea;
 		{
 		case "LogIn":
 	
-		
+			
 			if(login.getTxtUserhere().isEmpty()||login.getTxtPassword().isEmpty())
 			   {
 			   System.out.println(" please enter the details in two feilds");
@@ -109,6 +109,7 @@ import javax.swing.JTextArea;
 			
 			else 
 			{
+				myApp.setUsername(login.getTxtUserhere());
 				  mainFarame=new MainFramegui();
 				  login.dispose();
 			}
@@ -130,15 +131,15 @@ import javax.swing.JTextArea;
 			
 			if(panel!=null)
 			mainFarame.getContentPane().remove(panel);
-			checkfeedback=new Checkfeedbackgui();
+			checkfeedback=new ShowCheckfeedbackGUI();
 			mainFarame.getContentPane().add(checkfeedback);
 			panel=checkfeedback;
 			mainFarame.repaint();
 			break;
 		case "history":
-			
 			if(panel!=null)
 			mainFarame.getContentPane().remove(panel);
+			history=new Historygui();
 			mainFarame.getContentPane().add(history);
 			panel=history;
 			mainFarame.repaint();

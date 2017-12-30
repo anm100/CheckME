@@ -16,6 +16,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import Utils.MyTableModel;
+import application.myApp;
 import checkmeController.ConnectToServer;
 
 import java.awt.Color;
@@ -43,7 +44,7 @@ public class Historygui extends JPanel {
 		tblToday = new JTable();
 		scrollPane.setViewportView(tblToday);
 		tblToday.setModel(
-				new MyTableModel(new String[] { "CheckNum", "amount", "date", "checkStatus" }, new Object[][] {}));
+				new MyTableModel(new String[] { "hashid", "amount", "date", "checkStatus" }, new Object[][] {}));
 
 		JLabel lblTodaysExaminations = new JLabel("history");
 		lblTodaysExaminations.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 28));
@@ -88,15 +89,18 @@ public void fillExaminations(JTable tbl) {
 	JsonParser parser = new JsonParser();
 	
 	JsonArray arr = new JsonArray();
-	JsonObject jsnobject = (JsonObject) parser.parse(ConnectToServer.getCheckhistory("ameer"));
+	JsonObject jsnobject = (JsonObject) parser.parse(ConnectToServer.getCheckhistory(myApp.getUsername()));
 
 	JsonArray jsonArray = jsnobject.getAsJsonArray("Checks");
+	if(jsonArray !=null){
 	for (int i = 0; i < jsonArray.size(); i++) {
 		JsonObject e = jsonArray.get(i).getAsJsonObject();
 	    
-		model.addRow(new Object[] { e.get("hash"),e.get("amount"),e.get("date"),e.get("checkstatus") });
+		model.addRow(new Object[] { e.get("hash").getAsString(),e.get("amount").getAsString(),e.get("date").getAsString(),e.get("checkstatus").getAsString() });
 	}
+	
 	System.out.println("this array json"+jsonArray.toString());
+	}
 
 
 	}
