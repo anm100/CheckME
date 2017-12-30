@@ -1,12 +1,6 @@
 package Utils;
 
 import java.awt.Component;
-
-/**
- * Public class Messages to use in GUI's 
- * @author Bolous Abo Jaber 
- */
-import javax.swing.Icon;
 import javax.swing.JOptionPane;
 
 import application.Resources;
@@ -45,7 +39,7 @@ public class Messages {
  */
 	public static void successMessage(String message, String title, Component c) {
 		JOptionPane.showMessageDialog(c, message, title, JOptionPane.INFORMATION_MESSAGE,
-			null);
+				Resources.getIcon("success.png"));
 	}
 /**
  * @param message: Confirm message

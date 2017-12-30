@@ -6,6 +6,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import Utils.Messages;
 import application.myApp;
 import checkmeController.Check;
 import checkmeController.ConnectToServer;
@@ -149,6 +150,7 @@ public class EditCheckFeedbackGUI extends JFrame{
 
 					String jsnobject1 =(String) ConnectToServer.savehistorysCheckfeedback(getchecknum1(), getdatee(),getcheckstatus2());
 					System.out.println(jsnobject1);
+					Messages.successMessage("feedback updated!", "feedback updated!", null);
 					thisref.dispose();
 
 			 	}
@@ -158,8 +160,18 @@ public class EditCheckFeedbackGUI extends JFrame{
 			 	
 			 });
 			 
-			 button.setBounds(102, 212, 139, 23);
+			 button.setBounds(32, 208, 139, 23);
 			 panel_1.add(button);
+			 
+			 JButton btnCancel = new JButton("Cancel");
+			 btnCancel.addActionListener(new ActionListener() {
+			 	public void actionPerformed(ActionEvent e) {
+			 		Messages.confirmMessage("Are you sure you want to cancel?", "ChecKME", null);
+			 		thisref.dispose();
+			 	}
+			 });
+			 btnCancel.setBounds(194, 208, 89, 23);
+			 panel_1.add(btnCancel);
 			 
 			 JPanel panel_2 = new JPanel();
 			 tabbedPane.addTab("history feed back for check", null, panel_2, null);
