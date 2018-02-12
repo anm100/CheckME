@@ -7,6 +7,11 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import Utils.Messages;
 import application.myApp;
 
 import java.awt.Font;
@@ -60,11 +65,37 @@ public class Validategui extends JPanel {
 	save1.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println(myApp.getUsername());
+			boolean flag=false;
+			JsonParser parser = new JsonParser();
+		String hashid=checknum1.getText()+banknum1.getText()+branchnum1.getText()+accountnum1.getText();
+			JsonArray arr = new JsonArray();
+			JsonObject jsnobject = (JsonObject) parser.parse(ConnectToServer.getCheckhistory(myApp.getUsername()));
+
+			JsonArray jsonArray = jsnobject.getAsJsonArray("Checks");
+			if(jsonArray !=null){
+			for (int i = 0; i < jsonArray.size(); i++) {
+				JsonObject e1 = jsonArray.get(i).getAsJsonObject();
+			    
+				if(e1.get("hash").getAsString().equals(hashid)){
+					flag=true;
+				}
+			}
+		}  
+			
+			if(flag ==true){
+				Messages.errorMessage(" the  check is in the database already!!! ","validate",null);
+				
+			}
+			else {
+			
 			System.out.println(ConnectToServer.connectwritingcheck(checknum1.getText(), banknum1.getText(), branchnum1.getText(), accountnum1.getText(),amount.getText(),
 																	date.getText(),id.getText(),myApp.getUsername(),
-																	reader[0]+reader[1]+reader[2]+reader[3]));
+																	checknum1.getText()+	banknum1.getText()+branchnum1.getText()+accountnum1.getText()));
+			Messages.successMessage("the check  entered to the  database successfuly plaese check the history and feedback !", "validate!", null);
+			}
 			
-		}
+		
+		}  
 	});
 	save1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 	save1.setBounds(230, 390, 122, 23);
@@ -91,7 +122,7 @@ public class Validategui extends JPanel {
 			}
 			else
 			{
-				System.out.println(" plase insert a check  the  check reader again");
+				Messages.errorMessage("  plase insert a check  the  check reader again","validate",null);
 				
 			}
 			

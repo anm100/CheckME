@@ -13,6 +13,8 @@ import java.net.URLEncoder;
 
 import org.omg.CORBA.portable.OutputStream;
 
+import application.myApp;
+
 public class ConnectToServer {
 
 	public static String connect(String  POST_PARAMS,String URL)
@@ -101,7 +103,7 @@ public class ConnectToServer {
 	public static String connectwriting (String username ,String pass , String mail  )
 	{
 		String POST_PARAMS="&username=" +username+"&password="+pass+"&mail="+mail;
-		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/register.php");
+		String inputLine = connect(POST_PARAMS,myApp.getUrl()+"register.php");
 		
 		System.out.println(inputLine);
 		  
@@ -113,7 +115,7 @@ public class ConnectToServer {
 	public static String connectwritingcheck (String checknum ,String banknum , String branchnum, String accountnum,String amount,String date,String personid,String   uploader, String  hash)
 	{
 		String POST_PARAMS="&checknum=" +checknum + "&banknum=" +banknum+ "&branchnum=" + branchnum+ "&accountnum=" +accountnum+"&amount=" + amount+ "&date=" + date+ "&personid=" + personid+ "&uploader=" + uploader + "&hash=" + hash;
-		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/validate.php");
+		String inputLine = connect(POST_PARAMS,myApp.getUrl()+"validate.php");
 		
 		System.out.println(inputLine);
 		  
@@ -128,7 +130,7 @@ public class ConnectToServer {
 	public static boolean Checkuser(String userName, String password)
 	{
 		String POST_PARAMS="&username=" +userName+ "&password="+password;
-		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/login.php");
+		String inputLine = connect(POST_PARAMS,myApp.getUrl()+"login.php");
         if (inputLine.contains("User Found")) 
         	return true;
         else
@@ -139,39 +141,34 @@ public class ConnectToServer {
 	
 	{
 		//String POST_PARAMS="&hash=" +CheckNum;
-		return connectget(CheckNum,"http://majdy.waqet.net/majdy/get_check_details.php");
+		return connectget(CheckNum,myApp.getUrl()+"get_check_details.php");
 		 
 	}
 	public static String  getforgetpassword(String mail)
 	{
-		String POST_PARAMS="&mail" +mail;
-		String password = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/forgotpassword.php");
+		String POST_PARAMS="&mail=" +mail;
+		String password = connect(POST_PARAMS,myApp.getUrl()+"forgotpassword.php");
 		return password;
 	}
-	public static String  getforgetmail(String username)
-	{
-		String POST_PARAMS="&username" +username;
-		String mail = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/login.php");
-		return mail;
-	}
+	
 	
 	public static String  getCheckhistory(String username)
 	{
 		String POST_PARAMS="&uploader=" +username;
-		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/GetAllChecks.php");
+		String inputLine = connect(POST_PARAMS,myApp.getUrl()+"GetAllChecks.php");
 		return inputLine;
 	}
 	public static String  gethistoryCheckfeedback(String hash)
 	{
 		String POST_PARAMS="&hash=" +hash;
-		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/get_single_check_history.php");
+		String inputLine = connect(POST_PARAMS,myApp.getUrl()+"get_single_check_history.php");
 		return inputLine;
 	}
 	
 	public static String  savehistorysCheckfeedback(String hash,String date,String checkstatus)
 	{
 		String POST_PARAMS="&hash=" +hash+"&date=" +date+"&checkstatus=" +checkstatus;
-		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/AddCheckHistory.php");
+		String inputLine = connect(POST_PARAMS,myApp.getUrl()+"AddCheckHistory.php");
 		return inputLine;
 	}
 	
@@ -180,7 +177,7 @@ public class ConnectToServer {
 	public static String  savestatusCheckfeedback(String hash,String amount,String date,String checkstatus)
 	{
 		String POST_PARAMS="&hash=" +hash+"&amount=" +amount+"&date=" +date+"&checkstatus=" +checkstatus;
-		String inputLine = connect(POST_PARAMS,"http://majdy.waqet.net/majdy/update_check.php");
+		String inputLine = connect(POST_PARAMS,myApp.getUrl()+"update_check.php");
 		return inputLine;
 	}
 	

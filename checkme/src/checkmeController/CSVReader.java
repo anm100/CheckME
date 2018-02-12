@@ -54,6 +54,30 @@ public class CSVReader {
 
 		     }
 
+		     
+		     public static String urlreader() {
+		    	 String urlFile = "C:/finalProject/CheckME/url.txt";
+		    	 
+		         String line = "";
+		         String cvsSplitBy = ",";
+
+		         try (BufferedReader br = new BufferedReader(new FileReader(urlFile))) {
+
+		             while ((line = br.readLine()) != null) {
+		            	 String[] country=line.split(cvsSplitBy);
+		         
+
+		               return line.toString();
+
+		             }
+
+		         } catch (IOException e) {
+		             e.printStackTrace();
+		         }
+				return null;
+
+		     }
+		     
 		
 	}
 

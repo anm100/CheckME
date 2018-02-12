@@ -70,7 +70,7 @@ public class ShowCheckfeedbackGUI  extends JPanel  {
 					if (event.getValueIsAdjusting())
 						return;
 					int row = tblToday.getSelectedRow();
-					System.out.println(row);
+					//System.out.println(row);
 					
 					if(row<0)
 						return;
@@ -103,6 +103,8 @@ public class ShowCheckfeedbackGUI  extends JPanel  {
 		JsonObject jsnobject = (JsonObject) parser.parse(ConnectToServer.getCheckhistory(myApp.getUsername()));
 
 		JsonArray jsonArray = jsnobject.getAsJsonArray("Checks");
+	
+		if(jsonArray !=null){
 		for (int i = 0; i < jsonArray.size(); i++) {
 			JsonObject e = jsonArray.get(i).getAsJsonObject();
 		    
@@ -115,6 +117,8 @@ public class ShowCheckfeedbackGUI  extends JPanel  {
 
 
 		}
+	
+	}
 	
 	
 	

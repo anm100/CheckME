@@ -8,11 +8,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
+import Utils.Messages;
 import checkme3.Historygui;
 import checkme3.Logingui;
 
 import checkme3.MainFramegui;
 import checkme3.Validategui;
+import checkme3.forgetpasswordgui;
+import checkmeController.CSVReader;
 import checkmeController.Check;
 import checkmeController.ConnectToServer;
 import checkme3.Aboutusgui;
@@ -24,16 +27,25 @@ import javax.swing.JTextArea;
 
 	private static myApp instance = null;
 	 	private static String username ;
-	 	private static String mail ;
-	
+	 	private static String password ;
+	 
+		private static String mail ;
+	 	private static String url ;
+		public static String getUrl() {
+			return url;
+		}
+		public static void setUrl(String url) {
+			myApp.url = url;
+		}
 		Historygui history ;
 		Aboutusgui  aboutus =new Aboutusgui();
 		ShowCheckfeedbackGUI checkfeedback;
-		Registergui register=new Registergui();
-		Validategui validate=new Validategui();
+		Registergui register;
+		Validategui validate;
+		 forgetpasswordgui forgetpassword;
 		static MainFramegui mainFarame=null;
 		
-		static Logingui login=null;
+		public static Logingui login=null;
 		
 
 		
@@ -44,6 +56,8 @@ import javax.swing.JTextArea;
 		
 	   protected myApp() {
 	      // Exists only to defeat instantiation.
+		  myApp.setUrl(CSVReader.urlreader()); 
+		   
 	   }
 	   public static myApp getInstance() {
 	      if(instance == null) {
@@ -84,23 +98,19 @@ import javax.swing.JTextArea;
 			
 			if(login.getTxtUserhere().isEmpty()||login.getTxtPassword().isEmpty())
 			   {
-			   System.out.println(" please enter the details in two feilds");
+				Messages. warningMessage(" please enter the details in two feilds","LogIn",null);
 				login.dispose();
 				 login=new Logingui();
 			    
 			   
 			    }
-			else if(!login.getTxtUserhere().isEmpty()&&login.getTxtPassword().isEmpty())
-			   {
-				myApp.setUsername(login.getTxtUserhere());
-				myApp.setMail(ConnectToServer.getforgetpassword((ConnectToServer.getforgetmail(login.getTxtUserhere()))));
-				
-				
-			   }
+			
 			   
 
 			else if(ConnectToServer.Checkuser(login.getTxtUserhere(),login.getTxtPassword())==false)
 			{
+				Messages.errorMessage(" you are not registerd yet !!","register",null);
+				new Registergui();
 				
 			}
 			
@@ -147,6 +157,7 @@ import javax.swing.JTextArea;
 			
 			if(panel!=null)
 			mainFarame.getContentPane().remove(panel);
+			validate=new Validategui();
 			mainFarame.getContentPane().add(validate);
 			panel=validate;
 			mainFarame.repaint();
@@ -175,4 +186,18 @@ import javax.swing.JTextArea;
 	public static void setUsername(String username) {
 		myApp.username = username;
 	}
+	
+	public static String getPassword() {
+		return password;
+	}
+	
+	public static  void setPassword(String asString) {
+		myApp.password = password;
+		
+	}
+	public static void login() {
+		new Logingui();
+		
+	}
+
 }

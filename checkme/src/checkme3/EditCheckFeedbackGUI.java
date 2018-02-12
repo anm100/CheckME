@@ -27,6 +27,7 @@ public class EditCheckFeedbackGUI extends JFrame{
 		JPanel editCheckFeedback;
 		JPanel panel=null;
 		private String checkHistoryDATA=new String("");
+		private String checkstatuss=new String("");
 		private JTextField amount2;
 		private JTextField datee;
 		private JTextField checknum1;
@@ -56,7 +57,7 @@ public class EditCheckFeedbackGUI extends JFrame{
 		//	 getContentPane().add(btnRegister);
 
 			  editCheckFeedback = new JPanel();
-			 editCheckFeedback.setBounds(0, 0, 460, 458);
+			 editCheckFeedback.setBounds(0, 0, 452, 458);
 			 getContentPane().add(editCheckFeedback);
 			// getContentPane().remove(lohinPanel);
 			 //getContentPane().add(register);
@@ -72,7 +73,7 @@ public class EditCheckFeedbackGUI extends JFrame{
 			 getContentPane().add(editCheckFeedback);
 			 
 			 JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-			 tabbedPane.setBounds(15, 103, 364, 326);
+			 tabbedPane.setBounds(15, 90, 369, 339);
 			 editCheckFeedback.add(tabbedPane);
 			 
 			 JPanel panel_1 = new JPanel();
@@ -80,21 +81,68 @@ public class EditCheckFeedbackGUI extends JFrame{
 			 panel_1.setLayout(null);
 			 
 			 JRadioButton honor = new JRadioButton("honored");
-			 honor.setBounds(6, 155, 65, 23);
+			 honor.addActionListener(new ActionListener() {
+			 	public void actionPerformed(ActionEvent e) {
+			 		honor.setSelected(true);
+			 		
+			 		checkstatus2.setText(" 0");
+			 		honor.setSelected(true);
+			 		rejectedtec.setSelected(false);
+			 		rejectnomoney.setSelected(false);
+			 		ButtonGroup group = new ButtonGroup();
+			 		group.add(rejectedtec);
+			 		group.add(honor);
+			 		
+			 		group.add (rejectnomoney );
+			 	}
+			 });
+			 honor.setBounds(6, 155, 84, 23);
 			 panel_1.add(honor);
 			 honor.setHorizontalAlignment(SwingConstants.LEFT);
 			 
 			 JRadioButton rejectedtec = new JRadioButton("reject technically");
-			 rejectedtec.setBounds(92, 155, 107, 23);
+			 rejectedtec.addActionListener(new ActionListener() {
+			 	public void actionPerformed(ActionEvent arg0) {
+			 		
+			 		rejectedtec.setSelected(true);
+			 		checkstatus2.setText("1");
+			 		honor.setSelected(false);
+			 		
+			 		rejectnomoney.setSelected(false);
+			 		ButtonGroup group = new ButtonGroup();
+			 		group.add(rejectedtec);
+			 		group.add(honor);
+			 		
+			 		group.add (rejectnomoney );
+			 		 
+			 	}
+			 });
+			 rejectedtec.setBounds(92, 155, 123, 23);
 			 panel_1.add(rejectedtec);
 			 
 			 JRadioButton rejectnomoney = new JRadioButton("reject not enough money");
-			 rejectnomoney.setBounds(206, 155, 147, 23);
+			 rejectnomoney.addActionListener(new ActionListener() {
+			 	public void actionPerformed(ActionEvent e) {
+			 		rejectedtec.setSelected(false);
+			 		checkstatus2.setText("-1");
+			 		honor.setSelected(false);
+			 		
+			 		rejectnomoney.setSelected(true);
+			 		ButtonGroup group = new ButtonGroup();
+			 		group.add(rejectedtec);
+			 		group.add(honor);
+			 		group.add(rejectnomoney);
+			 		
+			 	}
+			 });
+			 rejectnomoney.setBounds(217, 155, 164, 23);
 			 panel_1.add(rejectnomoney);
 			 
 			 amount2 = new JTextField();
+			 amount2.setHorizontalAlignment(SwingConstants.CENTER);
 			 amount2.setText(check.getamount());
 			 amount2.setBounds(145, 104, 86, 20);
+			 amount2.disable();
 			 panel_1.add(amount2);
 			 amount2.setColumns(10);
 			 
@@ -190,10 +238,18 @@ public class EditCheckFeedbackGUI extends JFrame{
 				 JsonArray	jsonArray = jsnobject.getAsJsonArray("Checks");
 				if(jsonArray !=null){
 					
-				
+		String arr[]={"rejected not enough money","honored","rejected technically"};	
 				for (int i = 0; i < jsonArray.size(); i++) {
 					JsonObject e = jsonArray.get(i).getAsJsonObject();
-					checkHistoryDATA+=" data:"+e.get("date").toString()+" status:"+e.get("checkstatus").toString()+"\n";
+			
+					/*   if(Integer.parseInt(e.get("checkstatus").getAsString())==0){
+						   checkstatuss=new String("honored");
+						   System.out.println("I enter to if honored");}
+					   else if(e.get("checkstatus").getAsString().equals("-1")){checkstatuss=new String("rejected not enough money");}
+					   else {checkstatuss=new String("rejected technically");}
+					*/
+					checkHistoryDATA+="data:"+e.get("date").toString() + "status:"+arr[Integer.parseInt(e.get("checkstatus").getAsString())+1]+"\n";
+					System.out.println("I'm check status : "+Integer.parseInt(e.get("checkstatus").getAsString()));
 				}
 				textArea.setText(checkHistoryDATA);
 				}else {

@@ -2,6 +2,11 @@ package checkme3;
 
 import javax.swing.*;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import Utils.Messages;
 import application.myApp;
 import checkmeController.ConnectToServer;
 
@@ -21,6 +26,7 @@ public class Logingui extends JFrame{
 		private Logingui thisref=this;
 		static MainFramegui mainFarame=null;
 		JPanel loginPanel;
+		 forgetpasswordgui forgetpassword;
 		static Logingui login=null;
 		Registergui register;
 		JPanel panel=null;
@@ -32,7 +38,7 @@ public class Logingui extends JFrame{
 			setVisible(true);
 		}
 		 public void frame1(){
-			 register= new Registergui();
+			// register= new Registergui();
 	
 			 JLabel lblNewLabel = new JLabel("Username");
 			 lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 16));
@@ -80,15 +86,26 @@ public class Logingui extends JFrame{
 			 JButton forgetpass = new JButton("Forget Password");
 			 forgetpass.addActionListener(new ActionListener() {
 			 	public void actionPerformed(ActionEvent arg0) {
-			 	
-			 		 
-			 	
-			 		 txtPassword.setText(myApp.getMail());
-			 	
-			 	
+			 		
+//					if(txtPassword.getText().isEmpty()&&txtUserhere.getText().isEmpty())
+//					   {
+//						Messages. warningMessage(" please enter the details in two feilds","forgotpassword",null);
+//						thisref.dispose();
+//						new Logingui();
+//					    
+//					   
+//					    }
 			 		
 			 		
+			 	
+					
+			 		forgetpassword= new forgetpasswordgui();
+			 		 thisref.dispose();
+		 	
 			 	}
+			 	
+			 		
+	
 			 });
 			 forgetpass.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 			 forgetpass.setBounds(149, 269, 155, 23);
@@ -100,8 +117,11 @@ public class Logingui extends JFrame{
 				 		
 				 		
 				 		
-				 	
-				 
+				 	 register= new Registergui();
+				 	 thisref.dispose();
+				 		
+						
+					
 				 		
 				 	}
 				 });
@@ -113,7 +133,7 @@ public class Logingui extends JFrame{
 		//	 getContentPane().add(btnRegister);
 
 			  loginPanel = new JPanel();
-			 loginPanel.setBounds(0, 0, 417, 360);
+			 loginPanel.setBounds(0, 0, 474, 360);
 			 getContentPane().add(loginPanel);
 			// getContentPane().remove(lohinPanel);
 			 //getContentPane().add(register);
@@ -135,8 +155,8 @@ public class Logingui extends JFrame{
 			 btnNewButton.addActionListener(myApp.getInstance());
 			 setVisible(true);
 			 getContentPane().setLayout(null);
-			 getContentPane().add(register);
-			 getContentPane().remove(register);
+			 //getContentPane().add(register);
+			// getContentPane().remove(register);
 			 getContentPane().add(loginPanel);
 		 }
 		 

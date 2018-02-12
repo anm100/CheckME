@@ -6,15 +6,19 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.text.JTextComponent;
 
+import Utils.Messages;
+import application.myApp;
 import checkmeController.ConnectToServer;
 
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Registergui extends JPanel {
+public class Registergui extends JFrame {
 	private JTextField username;
 	private Registergui thisref=this;
     
@@ -48,52 +52,58 @@ public class Registergui extends JPanel {
 	
 	public Registergui()
 	{
-	setBounds(45, 124, 474, 432);
-	setLayout(null);
-	setBackground(Color.orange);
+	setBounds(45, 124, 525, 380);
+	getContentPane().setLayout(null);
+	setBackground(Color.WHITE);
 	
 	JLabel register = new JLabel("register");
 	register.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 25));
 	register.setHorizontalAlignment(SwingConstants.CENTER);
 	register.setBounds(95, 26, 255, 26);
-	add(register);
+	getContentPane().add(register);
 	
 	JLabel firstname = new JLabel("username");
 	firstname.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 	firstname.setHorizontalAlignment(SwingConstants.CENTER);
 	firstname.setBounds(68, 97, 80, 33);
-	add(firstname);
+	getContentPane().add(firstname);
 	
 	JLabel password = new JLabel("password");
 	password.setHorizontalAlignment(SwingConstants.CENTER);
 	password.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 	password.setBounds(68, 141, 80, 30);
-	add(password);
+	getContentPane().add(password);
 	
 	username = new JTextField();
 	username.setBounds(207, 97, 86, 20);
-	add(username);
+	getContentPane().add(username);
 	username.setColumns(10);
 	
 	pass = new JTextField();
 	pass.setBounds(207, 138, 86, 20);
-	add(pass);
+	getContentPane().add(pass);
 	pass.setColumns(10);
 	
 	JButton finish = new JButton("finish");
 	finish.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 	finish.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			if((ConnectToServer.connectwriting(username.getText().toString(),pass.getText().toString(), mail.getText().toString())=="register ok"))
+			if(!username.getText().isEmpty()&&!pass.getText().isEmpty()&&!mail.getText().isEmpty())
 			{
-			
-		    System.out.println("register ok");
+				ConnectToServer.connectwriting(username.getText().toString(),pass.getText().toString(), mail.getText().toString());
+				Messages.successMessage( "register ok","register",null);
+				thisref.dispose();
+				myApp.login();
 			}
 			
 			else{
 				
 				
-				 System.out.println("insert correct details again!!");
+				
+				
+				Messages.errorMessage(" insert correct details again!!","register",null);
+			
+				new Registergui();
 				
 			}
 
@@ -101,17 +111,17 @@ public class Registergui extends JPanel {
 		}
 	});
 	finish.setBounds(109, 239, 89, 33);
-	add(finish);
+	getContentPane().add(finish);
 	
 	JLabel email = new JLabel("email");
 	email.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 	email.setHorizontalAlignment(SwingConstants.CENTER);
 	email.setBounds(68, 182, 73, 17);
-	add(email);
+	getContentPane().add(email);
 	
 	mail = new JTextField();
 	mail.setBounds(207, 179, 86, 20);
-	add(mail);
+	getContentPane().add(mail);
 	mail.setColumns(10);
 	
 	JButton back1 = new JButton("back");
@@ -119,12 +129,13 @@ public class Registergui extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 		
 			new Logingui();
-			thisref.setVisible(false);
+			thisref.dispose();
+			
 		}
 	});
 	back1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 	back1.setBounds(224, 239, 89, 33);
-	add(back1);
+	getContentPane().add(back1);
 	setVisible(true);
 	}
 
