@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CheckMeNew</string>
+    <string name="facebook_app_id">298152063939117</string>
+
+
+    <string name="hellousername">مرحبا ايها المستخدم</string>
+    <string name="actionsettings">إعدادات</string>
+    <string name="helloworld">مرحبا </string>
+    <string name="menusettings">إعدادات</string>
+    <string name="titleactivity_main">ABBYY Cloud OCR SDK Demo App</string>
+    <string name="fromCamera">من الكاميرا</string>
+    <string name="fromFile">من ملف</string>
+    <string name="title_activity_results">النتائج</string>
+    <string name="hello">مرحبا</string>
+    <string name="ValidateCheck">تحقق من صحة</string>
+    <string name="validationcomplete"> اكنمال التجقق من الصحه   </string>
+    <string name="History">تاريخ</string>
+    <string name="LogOut">خروج</string>
+    <string name="CheckFeedback">تحقق من التعليقات</string>
+    <string name="HowToUse">كيفيه الاستعمال</string>
+    <string name="Password">كلمه السر</string>
+    <string name="ForgotPass">هل نسيت كلمه السر</string>
+    <string name="PersonID">هويه الشخص</string>
+    <string name="Amout">المبلغ</string>
+    <string name="ChoosePaymentDate">اختيار يوم الدفع</string>
+    <string name="Search..">البحث ..</string>
+    <string name="Nochecksneedyourattention"> لا يوجد شيكات تثير الاهتمام</string>
+    <string name="Username">اسم المستخدم</string>
+    <string name="Back">رجوع</string>
+    <string name="Continue">استمر</string>
+    <string name="CheckNumber">رقم الشيك</string>
+    <string name="BankNumber">رقم البنك</string>
+    <string name="BranchNumber">رقم فرع البنك</string>
+    <string name="AccountNumber">رقم حساب</string>
+    <string name="ResetyourPassword">اعد ضبط كلمه السر</string>
+    <string name="EnteryourEmailAddress"> اعد ادخال البريد الالكتروني</string>
+    <string name="Emai">البريد الالكتروني</string>
+    <string name="Reset">اعاده تعيين</string>
+    <string name="Login">الدخول</string>  Login
+    <string name="BacktoLogin">الرجوع الى صفحه البدايه</string>
+    <string name="EnterPassword"> ادخل كلمه السر</string>
+    <string name="EnterUsername"> ادخل اسم المستخدم</string>
+    <string name="EnterEmail">ادخل البريد الالكتروني</string>
+    <string name="ConfirmPassword">تاكيد كلمه المرور</string>
+    <string name="ConfirmEmail">تاكيد البريد الالكتروني</string>
+    <string name="Searchhistory..">بحث في السجل.</string>
+    <string name="NoHistoryFound">لم يتم العثور على السجل</string>
+    <string name="PaymentDate">تاريخ الدفع</string>
+    <string name="register">التسجيل </string>
+    <string name="RejectedHonoredCheckPleasechooseexactdateofthisaction">رفض / تحقق شرف الشيك؟ الرجاء اختيار التاريخ المحدد لهذا الإجراء:</string>
+    <string name="ChangeDate">تغيير التاريخ</string>
+    <string name="CheckStatus">تحقق من حاله</string>
+    <string name="Honored">تكريم</string>
+    <string name="Rejectedtechnical">رفوض (تقنيا)</string>
+    <string name="RejectedNoEnoughMoney">رفوض(لا يوجد مال كافي)</string>
+    <string name="delete">مسح</string>
+    <string name="save">حفظ</string>
+    <string name="NohistoryfoundforthisCheck">لم يتم العثور على سجل لهذا الشيك</string>
+    <string name="ValidationComplete">االتحقق من الصحه الكامله للشيك</string>
+    <string name="Totalchecksforthisperson">كميه الشيكات لهذا الشخص</string>
+    <string name="TotalNumber">الرقم الكلي</string>
+    <string name="TotalAmount">المبلغ الكلي</string>
+    <string name="Amount">المبلغ </string>
+    <string name="RejectedChecks">شيكات مرفوضه</string>
+    <string name="HonoredChecks">الشيكات المكرمه</string>
+    <string name="OtherChecksnostats">شيكات اخرى </string>
+    <string name="aboutus">من نحن</string>
+    <string name="Email">البريد الالكتروني</string>
+    <string name="finish">انهاء</string>
+</resources>

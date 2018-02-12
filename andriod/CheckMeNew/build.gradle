@@ -1,0 +1,44 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+
+        //added
+      //  apply plugin: 'java'
+      //  sourceCompatibility = 1.7
+       // targetCompatibility = 1.7
+        //sourceCompatibility JavaVersion.VERSION_1_7 //added
+           // sourceCompatibility JavaVersion.VERSION_1_8    //added
+           // targetCompatibility JavaVersion.VERSION_1_8   //added
+
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+
+        //compile "com.android.support:appcompat-v7:25.2.0"//added
+       /// targetCompatibility JavaVersion.VERSION_1_8
+       // sourceCompatibility JavaVersion.VERSION_1_8
+
+
+        google()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+
+
+//apply plugin: 'com.android.application'//added

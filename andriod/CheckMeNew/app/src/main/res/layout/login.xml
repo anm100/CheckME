@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@drawable/bg"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <ImageView
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitStart"
+        android:src="@drawable/checkmelogo"
+        android:background="@android:color/transparent"
+        android:id="@+id/imageView3" />
+
+    <TextView
+        android:id="@+id/textUser"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="@string/Username"
+        android:textIsSelectable="false" />
+    <EditText
+        android:text=""
+        android:id="@+id/username"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1">
+    </EditText>
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="@string/Password"
+        />
+    <EditText
+        android:text=""
+        android:id="@+id/password"
+        android:inputType="textPassword"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1">
+    </EditText>
+    <Button
+        android:text="@string/Login"
+        android:id="@+id/Button01"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+    </Button>
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        />
+
+    <FrameLayout
+        android:layout_width="352dp"
+        android:layout_height="153dp">
+
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="142dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:text='@string/ForgotPass'/>
+
+
+        <TextView
+            android:id="@+id/textRegister"
+            android:layout_width="136dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/register" />
+
+
+        <com.facebook.login.widget.LoginButton
+            android:text="Login"
+            android:id="@+id/login_button"
+            android:layout_width="211dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal" />
+
+
+    </FrameLayout>
+
+</LinearLayout>

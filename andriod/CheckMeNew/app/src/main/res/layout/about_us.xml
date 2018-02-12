@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/main_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+
+
+
+
+
+    <ImageView
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitStart"
+        android:src="@drawable/checkmelogo"
+        android:background="@android:color/transparent"
+        android:id="@+id/imageView3" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="450dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="       &#xA;  &#xA; &#xA; &#xA;   Supervisor : Elana Ravve&#xA;&#xA;                Students       &#xA;          Majde Darawshe   &#xA;         Ali Abu Zwayed&#xA;  &#xA;&#xA;            version 1.5&#xA;      Ort Braude College &#xA;&#xA;             Copyright ©"
+        android:id="@+id/textView"
+        android:layout_gravity="center_vertical" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_margin="16dp"
+        android:src="@drawable/back_button"
+        android:onClick="Back"
+        app:layout_anchorGravity="bottom|left|end" />
+</android.support.design.widget.CoordinatorLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

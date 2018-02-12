@@ -1,0 +1,156 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:background="@drawable/bg"
+    android:id="@+id/about_us">
+
+
+    <ImageButton
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/history"
+        android:background="@android:color/transparent"
+        android:id="@+id/imageButton"
+        android:layout_above="@+id/textView10"
+        android:layout_alignRight="@+id/logoff"
+        android:layout_alignEnd="@+id/logoff" />
+
+    <ImageButton
+        android:layout_width="134dp"
+        android:layout_height="134dp"
+        android:scaleType="fitStart"
+        android:id="@+id/validateButton1"
+        android:src="@drawable/validates"
+        android:background="@android:color/transparent"
+        android:longClickable="false"
+        android:nestedScrollingEnabled="false"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width="117dp"
+        android:layout_height="178dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/about_us"
+        android:background="@android:color/transparent"
+        android:text="@string/aboutus"
+        android:onClick="AboutUs"
+        android:id="@+id/button"
+        android:translationZ="@dimen/abc_action_bar_stacked_max_height"
+        android:layout_below="@+id/textView9"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="207dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/ValidateCheck"
+        android:id="@+id/textView9"
+        android:layout_gravity="center"
+        android:layout_below="@+id/validateButton1"
+        android:layout_alignRight="@+id/button"
+        android:layout_alignEnd="@+id/button" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/History"
+        android:id="@+id/textView10"
+        android:layout_alignTop="@+id/textView9"
+        android:layout_alignLeft="@+id/imageButton"
+        android:layout_alignStart="@+id/imageButton"
+        android:layout_marginLeft="33dp"
+        android:layout_marginStart="33dp" />
+
+    <ImageButton
+        android:layout_width="117dp"
+        android:layout_height="178dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/off"
+        android:background="@android:color/transparent"
+        android:id="@+id/logoff"
+        android:layout_alignTop="@+id/button"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/LogOut"
+        android:id="@+id/textView11"
+        android:layout_alignBottom="@+id/logoff"
+        android:layout_alignLeft="@+id/textView10"
+        android:layout_alignStart="@+id/textView10"
+        android:layout_marginBottom="41dp" />
+
+    <ImageButton
+        android:layout_width="117dp"
+        android:layout_height="178dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/how"
+        android:background="@android:color/transparent"
+        android:id="@+id/HowtoUse"
+        android:layout_above="@+id/logoff"
+        android:layout_alignLeft="@+id/imageButton"
+        android:layout_alignStart="@+id/imageButton" />
+
+    <ImageButton
+        android:layout_width="117dp"
+        android:layout_height="178dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/notif"
+        android:background="@android:color/transparent"
+        android:id="@+id/notification"
+        android:layout_alignTop="@+id/HowtoUse"
+        android:layout_alignRight="@+id/textView9"
+        android:layout_alignEnd="@+id/textView9" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/CheckFeedback"
+        android:id="@+id/textView13"
+        android:layout_gravity="center"
+        android:layout_alignTop="@+id/textView12"
+        android:layout_alignLeft="@+id/textView9"
+        android:layout_alignStart="@+id/textView9" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/HowToUse"
+        android:id="@+id/textView12"
+        android:layout_marginBottom="52dp"
+        android:layout_above="@+id/logoff"
+        android:layout_alignLeft="@+id/textView11"
+        android:layout_alignStart="@+id/textView11" />
+
+    <TextView
+        android:layout_width="180dip"
+        android:layout_height="wrap_content"
+        android:text="@string/hello"
+        android:id="@+id/textUser"
+        android:textSize="20dp"
+        android:textColor="#ff0000"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/HowtoUse"
+        android:layout_alignEnd="@+id/HowtoUse" />
+
+
+</RelativeLayout>
+
+
+
+

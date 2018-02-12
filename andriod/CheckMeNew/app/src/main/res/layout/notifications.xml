@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg"
+    android:weightSum="1">
+
+    <EditText android:id="@+id/inputSearch"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:background="#ffffff"
+        android:hint="@string/Search.."
+        android:inputType="textVisiblePassword"
+        android:drawableLeft="@android:drawable/ic_menu_search"/>
+
+    <ListView
+        android:layout_below="@+id/inputSearch"
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:footerDividersEnabled="false"
+        android:divider="@android:color/black"
+        android:dividerHeight="5dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text=" @string/Nochecksneedyourattention"
+        android:id="@+id/textViewNOHISTORY"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="133dp"
+        android:textSize="40dp"
+        android:visibility="gone" />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:src="@drawable/back_button"
+        android:onClick="Back"
+        app:layout_anchorGravity="bottom|right|end"
+        android:id="@+id/editText"
+        android:layout_marginRight="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="41dp" />
+
+
+
+</RelativeLayout>

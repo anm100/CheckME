@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CheckMeNew</string>
+    <string name="facebook_app_id">298152063939117</string>
+
+    <string name="actionsettings">Settings</string>
+    <string name="helloworld">Hello world!</string>
+    <string name="menusettings">Settings</string>
+    <string name="titleactivitymain">ABBYY Cloud OCR SDK Demo App</string>
+    <string name="fromCamera">From Camera</string>
+    <string name="fromFile">From File</string>
+    <string name="titleactivityresults">Results</string>
+
+    <string name="ValidateCheck">Validate Check</string>
+    <string name="History">History</string>
+    <string name="LogOut">LogOut</string>
+    <string name="CheckFeedback">Check Feedback</string>
+    <string name="aboutus">About Us</string>
+
+    <string name="HowToUse">How To Use</string>
+
+    <string name="ForgotPass">Forget Password</string>
+
+    <string name="PersonID">Person ID</string>
+    <string name="Amount">Amount(NIS)</string>
+    <string name="ChoosePaymentDate">Choose Payment Date</string>
+    <string name="Search..">Search ..</string>
+    <string name="Nochecksneedyourattention">No checks need your attention!</string>
+    <string name="Back">Back</string>
+    <string name="Continue">Continue</string>
+
+    <string name="BankNumber">Bank Number</string>
+    <string name="BranchNumber">Branch Number</string>
+    <string name="AccountNumber">Account Number</string>
+    <string name="ResetyourPassword">Reset your Password</string>
+    <string name="EnteryourEmailAddress">Enter your Email Address</string>
+    <string name="Reset">Reset</string>
+    <string name="BacktoLogin">Back to Login</string>
+    <string name="EnterPassword"> Enter Password</string>
+    <string name="EnterUsername"> Enter Username</string>
+    <string name="EnterEmail">Enter Email</string>
+    <string name="ConfirmPassword">Confirm Password</string>
+    <string name="ConfirmEmail">Confirm Email</string>
+    <string name="Searchhistory..">Search history..</string>
+    <string name="NoHistoryFound">No History Found!</string>
+    <string name="PaymentDate">Payment Date</string>
+    <string name="RejectedHonoredCheckPleasechooseexactdateofthisaction">Rejected/Honored Check ? Please choose exact date of this action:</string>
+
+    <string name="CheckStatus">Check Status</string>
+    <string name="Honored">Honored</string>
+    <string name="Rejectedtechnical">Rejected (technical)</string>
+    <string name="RejectedNoEnoughMoney">Rejected (No Enough Money)</string>
+    <string name="delete">delete</string>
+    <string name="save">save</string>
+    <string name="NohistoryfoundforthisCheck">No history found for this Check</string>
+    <string name="ValidationComplete">Validation Complete</string>
+    <string name="Totalchecksforthisperson">Total checks for this person :</string>
+    <string name="validationcomplete">validationcomplete</string>
+    <string name="TotalNumber">Total Number</string>
+    <string name="TotalAmount">Total Amount(NIS)</string>
+    <string name="RejectedChecks">Rejected Checks</string>
+    <string name="HonoredChecks">Honored Checks</string>
+    <string name="OtherChecksnostats">Other Checks (no status)</string>
+    <string name="hellousername">Hello User name</string>
+    <string name="register">Register</string>
+    <string name="Login">Login</string>
+    <string name="Password">Password</string>
+    <string name="Username">Username</string>
+    <string name="CheckNumber">Check Number</string>
+    <string name="finish">Finish</string>
+    <string name="Rejected">Rejected</string>
+    <string name="Emai">Emai</string>
+    <string name="ChangeDate">ChangeDate</string>
+
+    <!--<string name="hello">Hello </string>
+    <string name="app_name"><b>WebP Conversion App</b></string>
+    -->
+
+
+    <string name="hello">Hello World, WebPConv!</string>
+
+    <string name="convert">Convert</string>
+    <string name="retake">Retake</string>
+    <string name="home">Home</string>
+    <string name="welcome_message">\n<b>Take picture:</b> Opens camera to take picture of check then converts to WebP format and sends to server to be scanned
+                                    \n\n<b>Connect to server:</b> Connects, waits 5 seconds, disconnects
+                                    \n\n<b>Run Tests:</b> Runs conversion tests, logs results</string>
+
+</resources>
+

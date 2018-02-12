@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/CheckNumber"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip"
+        android:paddingTop="10dip"
+        android:textSize="17dip"/>
+
+    <!-- Input Name -->
+    <EditText android:id="@+id/textHash"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dip"
+        android:maxLines="1"/>
+
+    <!-- Input description -->
+
+    <!-- Price Label -->
+
+
+
+
+
+
+
+    <!-- Description Label -->
+    <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/PaymentDate"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip"
+        android:paddingTop="10dip"
+        android:textSize="17dip" />
+
+    <EditText android:id="@+id/textDate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dip"
+        android:layout_marginBottom="15dip"
+        android:maxLines="1"
+        android:gravity="top" />
+
+    <TextView
+        android:text="@string/RejectedHonoredCheckPleasechooseexactdateofthisaction"
+        android:layout_width="327dp"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:layout_gravity="center"
+        android:layout_marginBottom="15dip"
+        android:maxLines="1"
+        android:gravity="top"
+        android:textStyle="bold"
+        android:textColor="#ff0000"
+        android:textSize="20dp" />
+
+    <Button
+        android:layout_width="134dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dip"
+        android:layout_gravity="center"
+        android:layout_marginBottom="15dip"
+        android:maxLines="1"
+        android:gravity="top"
+        android:textStyle="bold"
+        android:text="@string/ChoosePaymentDate"
+        android:id="@+id/buttonDate1" />
+
+    <Button android:id="@+id/buttonDate"
+        android:layout_width="120dip"
+        android:layout_gravity="center"
+        android:layout_height="40dip"
+        android:text="@string/ChangeDate"
+        android:visibility="gone" />
+
+    <!-- Input description -->
+
+    <TextView android:id="@+id/actionDate"
+        android:layout_width="86dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dip"
+        android:layout_gravity="center"
+        android:layout_marginBottom="15dip"
+        android:maxLines="1"
+        android:gravity="top"
+        android:textColor="#ff0000" />
+
+    <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/CheckStatus"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip"
+        android:paddingTop="10dip"
+        android:textSize="17dip"
+        android:textColor="#000000" />
+
+
+
+
+
+
+
+    <!-- Input description -->
+
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Honored"
+            android:id="@+id/radioHonored"
+            android:layout_gravity="center_horizontal" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Rejectedtechnical"
+            android:id="@+id/radioBounced"
+            android:layout_gravity="center_horizontal"
+            android:checked="false" />
+
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/RejectedNoEnoughMoney"
+            android:id="@+id/radioBounced2"
+            android:layout_gravity="center_horizontal"
+            android:checked="false" />
+
+
+
+
+    </RadioGroup>
+
+
+
+
+
+
+    <RelativeLayout android:layout_width="fill_parent"
+        android:layout_height="101dp"
+        android:orientation="horizontal">
+        <!-- Button Create Product -->
+
+
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|left"
+            android:src="@drawable/back_button"
+            android:onClick="Back"
+            app:layout_anchorGravity="bottom|left|end"
+            android:id="@+id/editText"
+            android:layout_marginLeft="37dp"
+            android:layout_marginStart="37dp"
+            android:layout_alignTop="@+id/editText2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/delete1"
+            android:onClick="delete"
+            app:layout_anchorGravity="bottom|right|end"
+            android:id="@+id/editText1"
+            android:layout_marginRight="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_alignTop="@+id/editText2"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/save"
+            android:onClick="save"
+
+            app:layout_anchorGravity="bottom|center|end"
+            android:id="@+id/editText2"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp" />
+        <!-- Button Create Product -->
+
+    </RelativeLayout>
+
+
+</LinearLayout>
