@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -38,6 +39,8 @@ public class AddedCmc extends Activity {
 
 
     String resultUrl;
+    private Bitmap bitMap;
+
     {
         resultUrl = "result.txt";
     }
@@ -91,7 +94,7 @@ public class AddedCmc extends Activity {
         // using Environment.getExternalStorageState() before doing this.
 
        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
-               Environment.DIRECTORY_PICTURES), "ABBYY Cloud OCR SDK Demo App");
+               Environment.DIRECTORY_PICTURES), "ABBYY");
 
         // This location works best if you want the created images to be shared
         // between applications and persist after your app has been uninstalled.
@@ -171,10 +174,16 @@ public class AddedCmc extends Activity {
         Uri  fileUri = getOutputMediaFileUri(); // create a file to save the image--was not here i moved
 
         String imageFilePath = null;
-
         switch (requestCode) {
             case TAKE_PICTURE:
-                imageFilePath = getOutputMediaFileUri().getPath();
+                //imageFilePath = getOutputMediaFileUri().getPath();
+                // get bundle
+                Bundle extras = data.getExtras();
+
+                // get
+                bitMap = (Bitmap) extras.get("data");
+                imageFilePath =MediaStore.Images.Media.insertImage(getContentResolver(), bitMap, "test.jpg" , "test1");
+
                 break;
 
                 //i adeed to camscanner
