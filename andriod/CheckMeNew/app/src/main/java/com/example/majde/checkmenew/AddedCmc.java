@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
@@ -157,6 +158,7 @@ public class AddedCmc extends Activity {
             }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {//its not even arriving to here!
         super.onActivityResult(requestCode, resultCode, data);
@@ -219,26 +221,33 @@ public class AddedCmc extends Activity {
 
             case SELECT_FILE: {
                 Uri imageUri = data.getData();
+                String filePath = "";
+                String wholeID = DocumentsContract.getDocumentId(imageUri);
 
-                String[] projection = { MediaStore.Images.Media.DATA };
-               Cursor cur = this.getContentResolver().query(imageUri, projection, null, null, null);// i updated ---to uncomment
-                //Cursor cur = this.getContentResolver().query(imageUri, null, null, null, null);// i updated ---to uncomment
+                // Split at colon, use second item in the array
+                String id = wholeID.split(":")[1];
 
-                // Cursor cur = managedQuery(imageUri, projection, null, null, null);// check if it works when taking picture --aside comment it
+                String[] column = { MediaStore.Images.Media.DATA };
 
+                // where id is equal to
+                String sel = MediaStore.Images.Media._ID + "=?";
 
+                Cursor cursor = this.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                        column, sel, new String[]{ id }, null);
 
-               // int column_index = cur.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-                cur.moveToFirst();
-                //projection[0]
-                imageFilePath = cur.getString(cur.getColumnIndex(MediaStore.Images.Media.DATA));  ///projection[0]
-              ///  imageFilePath  = cur.getString(column_index);
+                int columnIndex = cursor.getColumnIndex(column[0]);
+
+                if (cursor.moveToFirst()) {
+                    imageFilePath = cursor.getString(columnIndex);
+                }
+
+                cursor.close();
 
             }///case select_file
             break;
         }//switch
         //Remove output file
-        deleteFile(resultUrl);
+       /// deleteFile(resultUrl);
 
         Intent results = new Intent( this, ResultsActivity.class); // original = ResultsActivity.class , i changed to importingocr.class
         results.putExtra("IMAGE_PATH", imageFilePath);
@@ -252,6 +261,17 @@ public class AddedCmc extends Activity {
         Intent intent = new Intent(AddedCmc.this, ImportingManual.class); // redirect to main menu
         //intent.putExtra("username", username);
         startActivity(intent);
+    }
+    public String getPathFromURI(Uri contentUri) {
+        String res = null;
+        String[] proj = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
+        if (cursor.moveToFirst()) {
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            res = cursor.getString(column_index);
+        }
+        cursor.close();
+        return res;
     }
 
 }//class
