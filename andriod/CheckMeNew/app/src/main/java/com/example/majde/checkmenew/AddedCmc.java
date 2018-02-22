@@ -3,11 +3,13 @@ package com.example.majde.checkmenew;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Camera;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,19 +20,29 @@ import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.nio.ByteBuffer;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Majde on 4/28/2017.
  */
 
 public class AddedCmc extends Activity {
-
+    Uri imageUri=null;
     public static final int CAMERA_Permission_REQUEST_CODE = 8675309;
     private int flag=0;
     private final int TAKE_PICTURE = 0;
@@ -108,10 +120,14 @@ public class AddedCmc extends Activity {
             }
         }
         // Create a media file name
-        File mediaFile = new File(mediaStorageDir.getPath() + File.separator + "image.jpg" );   //drag image to here
+        File mediaFile = new File(mediaStorageDir.getPath());   //drag image to here   ----    + File.separator + "image.jpg"
 
         return mediaFile;
     }
+
+
+
+    String mCurrentPhotoPath=null;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void captureImageFromCamera(View view ) {
@@ -121,11 +137,33 @@ public class AddedCmc extends Activity {
             Intent intent = new Intent("android.media.action.IMAGE_CAPTURE"); //   "android.media.action.IMAGE_CAPTURE"  --new one
 
             // was-->  android.provider.MediaStore.ACTION_IMAGE_CAPTURE    --- oldest one
+
             //was not commented  Uri fileUri = getOutputMediaFileUri(); // create a file to save the image
      //was not commented   intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
-          // intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, fileUri); // i added this new one
+         //                intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, fileUri); // i added this new one
+             // String  filename = getFilesDir() + "/camera_pic.jpg";
+            File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+            File image = null;
+            try {
 
-            startActivityForResult(intent, TAKE_PICTURE);//
+                image = File.createTempFile(
+                        "testpic",  /* prefix */
+                        ".jpg",         /* suffix */
+                        storageDir      /* directory */
+                );
+                 mCurrentPhotoPath = image.getAbsolutePath();
+
+                imageUri =  FileProvider.getUriForFile(this,"com.example.android.fileprovider",image);
+                //Uri imageUri = Uri.fromFile(new File(filename));
+                intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT,
+                        imageUri);
+                startActivityForResult(intent, TAKE_PICTURE);//
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Save a file: path for use with ACTION_VIEW intents
+
 //        startActivity(intent);
 
         }//MAIN IF
@@ -161,6 +199,7 @@ public class AddedCmc extends Activity {
             }
     }
 
+
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {//its not even arriving to here!
@@ -173,59 +212,45 @@ public class AddedCmc extends Activity {
 
         Uri  fileUri = getOutputMediaFileUri(); // create a file to save the image--was not here i moved
 
-        String imageFilePath = null;
+
+        String imageFilePath = "";
+
         switch (requestCode) {
+
             case TAKE_PICTURE:
                 //imageFilePath = getOutputMediaFileUri().getPath();
                 // get bundle
-                Bundle extras = data.getExtras();
 
-                // get
-                bitMap = (Bitmap) extras.get("data");
-                imageFilePath =MediaStore.Images.Media.insertImage(getContentResolver(), bitMap, "test.jpg" , "test1");
+             //   Bundle extras = data.getExtras();
+              //  Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+
+                //3
+                //ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+               // thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+               //  Uri uri=  imageUri;
+                Intent results = new Intent( this, ResultsActivity.class); // original = ResultsActivity.class , i changed to importingocr.class
+                results.putExtra("IMAGE_PATH",mCurrentPhotoPath);
+                results.putExtra("RESULT_PATH", resultUrl);
+                startActivity(results);
+               // return;
+
+              /*  File file = new File(Environment.getExternalStorageDirectory()+File.separator + "image.jpg");
+                try {
+                    file.createNewFile();
+                    FileOutputStream fo = new FileOutputStream(file);
+
+                    fo.write(bytes.toByteArray());
+                    fo.close();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+*/
+
+              //  imageFilePath =MediaStore.Images.Media.insertImage(getContentResolver(), bitMap, "test.jpg" , "test1");
 
                 break;
 
-                //i adeed to camscanner
-
-          //icommented      Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-          //      Uri uri = Uri.fromFile(new File("\"image.jpg\"")); //Or  content uri picked from gallery
-          //icommented      intent.putExtra(Intent.EXTRA_STREAM, uri);
-          //icommented      intent.putExtra("scanned_image", imageFilePath);
-            //icommented    startActivityForResult(intent, TAKE_PICTURE);
-
-             /*   try {           //open activity to scan a new check
-                    Intent intent1 = new Intent(AddedCmc.this, ImportingOCR.class);  ///!!!!!!!!!!!!!!!!!!!!11update!!
-                    if (intent1 != null) {
-                        startActivity(intent1);//null pointer check in case package name was not found
-                    }
-                }//try
-                catch (Exception e) {       // if camscanner is not installed or it could not be opened for a reason
-                        e.printStackTrace(); */
-             //   } //catch    // to uncomment and fix!
-
-             /*       AddedCmc.this.runOnUiThread(new Runnable() {
-                        public void run() {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(AddedCmc.this);
-
-                            builder.setCancelable(true)
-                                    .setNegativeButton("Download CamScanner", new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int id) {
-                                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.intsig.lic.camscanner&hl=en"));
-                                      //      openApp(AddedCmc.this,"com.intsig.lic.camscanner");
-                                            startActivity(intent);
-
-                                        }
-                                    });
-
-                            */
-                      //      AlertDialog alert = builder.create();
-                      //      alert.show();
-                     //   }
-                   // });
-
-
-                //i adeed to camscanner
 
 
             case SELECT_FILE: {
@@ -253,17 +278,44 @@ public class AddedCmc extends Activity {
                 cursor.close();
 
             }///case select_file
+            Intent results2 = new Intent( this, ResultsActivity.class); // original = ResultsActivity.class , i changed to importingocr.class
+            results2.putExtra("IMAGE_PATH", imageFilePath);
+            results2.putExtra("RESULT_PATH", resultUrl);
+            startActivity(results2);
             break;
         }//switch
         //Remove output file
        /// deleteFile(resultUrl);
 
-        Intent results = new Intent( this, ResultsActivity.class); // original = ResultsActivity.class , i changed to importingocr.class
-        results.putExtra("IMAGE_PATH", imageFilePath);
-        results.putExtra("RESULT_PATH", resultUrl);
-        startActivity(results);
-    }   //onActivityResult()
 
+    }   //onActivityResult()
+    public Uri saveCameraPic(Bitmap pic)
+    {
+        File file = new File(getFilesDir(), "camera_pic.jpg");
+        FileOutputStream outputStream;
+
+        try {
+            outputStream = openFileOutput("camera_pic.jpg", Context.MODE_PRIVATE);
+            outputStream.write(getBytes(pic));
+            outputStream.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return Uri.fromFile(file);
+    }
+    public static byte[] getBytes(Bitmap bitmap) {
+        if (bitmap == null)
+            return null;
+       /* final int lnth=bitmap.getByteCount();
+        ByteBuffer dst= ByteBuffer.allocate(lnth);
+        bitmap.copyPixelsToBuffer( dst);
+        byte[] barray=dst.array();*/
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        return stream.toByteArray();
+    }
     @Override
     public void onBackPressed() // back button pressed - go back to previous class
     {
